@@ -1,2 +1,3 @@
-package general;public class Event {
+package general;
+public class Event {
 }

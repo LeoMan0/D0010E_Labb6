@@ -1,2 +1,3 @@
-package general;public class EventQueue {
+package general;
+public class EventQueue {
 }

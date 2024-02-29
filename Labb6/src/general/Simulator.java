@@ -1,2 +1,3 @@
-package general;public class Simulator {
+package general;
+public class Simulator {
 }

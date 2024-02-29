@@ -1,2 +1,3 @@
-package general;public class View {
+package general;
+public class View {
 }

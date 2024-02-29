@@ -1,2 +1,3 @@
-package specific;public class StoreState {
+package specific;
+public class StoreState {
 }
