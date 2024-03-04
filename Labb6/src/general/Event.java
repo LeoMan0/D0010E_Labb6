@@ -16,6 +16,10 @@ public abstract class Event {
 
         currentEvent = currentEvent.execute();
         currentEvent = currentEvent.execute();
+        currentEvent = currentEvent.execute();
+        currentEvent = currentEvent.execute();
+        currentEvent = currentEvent.execute();
+        currentEvent = currentEvent.execute();
 
     }
 
@@ -23,6 +27,9 @@ public abstract class Event {
     // The time of each Event is when the event is to be executed, not when the event started.
     // Meaning if we have an event called EventPay, it is not the time of when he started to pay.
     // It is the time when he is done paying.
+    // Therefore, the time for the next event has to be calculated as the current event is executed.
+
+
     protected float time;
 
     protected String nameOfCurrentEvent;

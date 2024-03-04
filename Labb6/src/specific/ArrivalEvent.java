@@ -12,14 +12,20 @@ public class ArrivalEvent extends Event {
 
     @Override
     public Event execute() {
-        getEventStatus();
-        nextTime();
 
-        return new EnterEvent(2);
+        getEventStatus();
+
+        float next = scheduleNextEventTime();
+
+        return new EnterEvent(next);
     }
 
-    public void nextTime() {
-        time = time + 1;
+    // Here we have to find the time
+    public float scheduleNextEventTime() {
+        // Something if StoreFull = false
+        return time;
+        // Something else
+        // Something wait or idk
     }
 
 
