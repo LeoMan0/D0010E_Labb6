@@ -5,19 +5,18 @@ import general.Event;
 public class EnterEvent extends Event {
 
 
-    public EnterEvent(float time) {
-        super(time);
+    public EnterEvent(float time, int customerNumber) {
+        super(time, customerNumber);
         this.nameOfCurrentEvent = "EnterEvent";
     }
 
 
     @Override
     public Event execute() {
-        getEventStatus();
 
         float next = scheduleNextEventTime();
 
-        return new PickEvent(next);
+        return new PickEvent(next, this.getEventTarget());
     }
 
     public float scheduleNextEventTime() {

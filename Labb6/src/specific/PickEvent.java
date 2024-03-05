@@ -6,19 +6,19 @@ import java.util.Queue;
 
 public class PickEvent extends Event {
 
-    public PickEvent(float time) {
-        super(time);
+    public PickEvent(float time, int customerName) {
+        super(time, customerName);
         this.nameOfCurrentEvent = "PickEvent";
     }
 
     // In this excute we have to make it so that customer is added to the queue
     @Override
     public Event execute() {
-        getEventStatus();
+
 
         float next = scheduleNextEventTime();
 
-        return new QueueEvent(next);
+        return new QueueEvent(next, this.getEventTarget());
     }
 
 

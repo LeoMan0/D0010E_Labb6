@@ -11,8 +11,9 @@ import java.util.Observer;
 import java.util.Observable;
 
 //  A class for general view
+@SuppressWarnings("deprecation")
 public class View implements Observer {
-    public void update (Observable o, Object arg) {
+    public void update(Observable o, Object arg) {
 
     }
 }

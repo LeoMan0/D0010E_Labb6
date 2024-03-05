@@ -9,36 +9,27 @@ public class EventQueue {
     //Just here to test stuff
     public static void main(String[] args) {
         // Create an initial event and an event queue
-        Event initialEvent = new ArrivalEvent(0); // Assuming ArrivalEvent is a valid subclass of Event
+        Event initialEvent = new ArrivalEvent(0, 0);
         EventQueue eventQueue = new EventQueue(initialEvent);
 
         // Add more events for testing
-        eventQueue.addInsert(new ArrivalEvent(1));
-        eventQueue.addInsert(new ArrivalEvent(2));
-        eventQueue.addInsert(new ArrivalEvent(1.5f));
+
+        int customerAmount = 6;
+        for (int i = 1; i < customerAmount; i++) {
+            eventQueue.addInsert(new ArrivalEvent(i, i));
+        }
+
 
         System.out.println("Initial Queue:");
         printQueue(eventQueue);
+        int numberOfExecutions = 4;
 
-        // Execute and insert, then print the queue to see changes
-        eventQueue.executeAndInsert();
-        System.out.println("\nQueue after 1st executeAndInsert:");
-        printQueue(eventQueue);
+        for (int i = 1; i <= numberOfExecutions; i++) {
+            eventQueue.executeAndInsert();
+            System.out.println("\nQueue after " + i + " executeAndInsert:");
+            printQueue(eventQueue);
+        }
 
-        // Repeat as necessary to test various scenarios
-
-        eventQueue.executeAndInsert();
-        System.out.println("\nQueue after 2nd executeAndInsert:");
-        printQueue(eventQueue);
-
-        eventQueue.executeAndInsert();
-        System.out.println("\nQueue after 3rd executeAndInsert:");
-        printQueue(eventQueue);
-
-        eventQueue.executeAndInsert();
-        System.out.println("\nQueue after 4th executeAndInsert:");
-        printQueue(eventQueue);
-        
     }
 
     // Utility method to print the event queue

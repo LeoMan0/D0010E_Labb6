@@ -4,19 +4,19 @@ import general.Event;
 
 public class QueueEvent extends Event {
 
-    public QueueEvent(float time) {
-        super(time);
+    public QueueEvent(float time, int customerName) {
+        super(time, customerName);
         this.nameOfCurrentEvent = "QueueEvent";
     }
 
     // Likewise we have to make it so that the customer leaves the queue here
     @Override
     public Event execute() {
-        getEventStatus();
+
 
         float next = scheduleNextEventTime();
 
-        return new PayEvent(next);
+        return new PayEvent(next, this.getEventTarget());
     }
 
     public float scheduleNextEventTime() {

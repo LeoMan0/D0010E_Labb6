@@ -11,19 +11,6 @@ public abstract class Event {
     //  currentEvent = currentEvent.execute() -> currentEvent = nextEvent
 
 
-    public static void main(String[] args) {
-        Event currentEvent = new ArrivalEvent(1);
-
-        currentEvent = currentEvent.execute();
-        currentEvent = currentEvent.execute();
-        currentEvent = currentEvent.execute();
-        currentEvent = currentEvent.execute();
-        currentEvent = currentEvent.execute();
-        currentEvent = currentEvent.execute();
-
-    }
-
-
     // The time of each Event is when the event is to be executed, not when the event started.
     // Meaning if we have an event called EventPay, it is not the time of when he started to pay.
     // It is the time when he is done paying.
@@ -34,9 +21,12 @@ public abstract class Event {
 
     protected String nameOfCurrentEvent;
 
+    protected int eventTarget;
 
-    public Event(float time) {
+
+    public Event(float time, int eventTarget) {
         this.time = time;
+        this.eventTarget = eventTarget;
     }
 
     public abstract Event execute();
@@ -46,10 +36,9 @@ public abstract class Event {
         return this.time;
     }
 
-    public void getEventStatus() {
-        System.out.println("Executing event " + nameOfCurrentEvent);
+    public int getEventTarget() {
+        return this.eventTarget;
     }
-
 
     //This method is just used to run tests
 
@@ -57,7 +46,9 @@ public abstract class Event {
     public String toString() {
         return "Event{" +
                 "time=" + time +
-                ", nameOfCurrentEvent='" + nameOfCurrentEvent + '\'' +
+                ", nameOfCurrentEvent='" + nameOfCurrentEvent +
+                " CustomerNumber= " + eventTarget +
+                '\'' +
                 '}';
     }
 

@@ -11,6 +11,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Observer;
 
+@SuppressWarnings("deprecation")
 public class State extends Observable {
     private boolean stopped;
     private double timePassed;
