@@ -12,22 +12,28 @@ import java.util.Observer;
 import java.util.Observer;
 
 @SuppressWarnings("deprecation")
-public class State extends Observable {
-    private boolean stopped;
-    private double timePassed;
+public abstract class State extends Observable {
+    private boolean stop = false;
+    private float timePassed = 0;
 
     // Check if simulator is stopped
-    public boolean stopped() {
-        return stopped;
+    public boolean getStop() {
+        return stop;
     }
 
 
     /*
      * @return time passed
      */
-    public double timePassed() {
+
+    public float getTimePassed() {
         return timePassed;
     }
+
+    public void setTimePassed(float newTimePassed) {
+        this.timePassed = newTimePassed;
+    }
+
 
     /*
      * @param event notify about the event in use to observer
