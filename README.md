@@ -12,7 +12,7 @@ EventQueue is mostly done I think. Events can be executed from Eventqueue. Perha
 ### Todo
 
 - [x] Event 
-- [ ] - [x] EventQueue
+- [x] EventQueue
 - [ ] Specific Event (Arrival Event etc)
 - [ ] StoreState
 - [ ] State
