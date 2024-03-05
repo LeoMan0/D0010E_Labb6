@@ -26,7 +26,7 @@ public class PickEvent extends Event {
         // Here we have to calculate the time
         // The customer have to wait in queque.
         // Have to create a queque somewhere. And get the paytime for everyone in front of this customer.
-        return time;
+        return ++time;
 
     }
 

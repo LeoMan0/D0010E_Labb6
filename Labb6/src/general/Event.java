@@ -51,4 +51,15 @@ public abstract class Event {
     }
 
 
+    //This method is just used to run tests
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "time=" + time +
+                ", nameOfCurrentEvent='" + nameOfCurrentEvent + '\'' +
+                '}';
+    }
+
+
 }

@@ -7,6 +7,7 @@
 
 package general;
 
+import java.util.Observable;
 import java.util.Observer;
 import java.util.Observer;
 
@@ -23,7 +24,7 @@ public class State extends Observable {
     /*
      * @return time passed
      */
-    public double timePassed () {
+    public double timePassed() {
         return timePassed;
     }
 

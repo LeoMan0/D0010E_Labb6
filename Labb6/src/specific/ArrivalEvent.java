@@ -23,7 +23,7 @@ public class ArrivalEvent extends Event {
     // Here we have to find the time
     public float scheduleNextEventTime() {
         // Something if StoreFull = false
-        return time;
+        return ++time;
         // Something else
         // Something wait or idk
     }
