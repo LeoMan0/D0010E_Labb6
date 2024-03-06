@@ -8,11 +8,6 @@ public class MakeCustomer {
     float arrivalTime, timeToPick, timeToPay, timeMaxWait;
 
 
-    //eventState is used to track what event is next to be excuted for each cutomer
-    //i.e eventState 0: EventArrival
-    //etc not sure yet.
-
-    int eventState = 0;
     boolean inStore;
 
     public MakeCustomer(float arrivalTime, float timeToPick, float timeToPay, float timeMaxWait) {
@@ -37,8 +32,6 @@ public class MakeCustomer {
     public float getTimeMaxWait() {
         return timeMaxWait;
     }
-
-
 
 
 }

@@ -8,11 +8,11 @@
 package general;
 
 import java.util.Observable;
-import java.util.Observer;
-import java.util.Observer;
 
 @SuppressWarnings("deprecation")
 public abstract class State extends Observable {
+
+    private int numberOfExectuions = 0;
     private boolean stop = false;
     private float timePassed = 0;
 
@@ -34,12 +34,19 @@ public abstract class State extends Observable {
         this.timePassed = newTimePassed;
     }
 
+    public int getNumberOfExectuions() {
+        return numberOfExectuions;
+    }
+
+    public void increseNumberOfExectuions() {
+        this.numberOfExectuions++;
+    }
 
     /*
      * @param event notify about the event in use to observer
      */
     public void notify(Event event) {
         setChanged();
-        notifyObservers(event);
+        notifyObservers();
     }
 }

@@ -21,19 +21,19 @@ public class EventQueue {
 
 
         System.out.println("Initial Queue:");
-        printQueue(eventQueue);
+        eventQueue.printQueue(eventQueue);
         int numberOfExecutions = 4;
 
         for (int i = 1; i <= numberOfExecutions; i++) {
             eventQueue.executeAndInsert();
             System.out.println("\nQueue after " + i + " executeAndInsert:");
-            printQueue(eventQueue);
+            eventQueue.printQueue(eventQueue);
         }
 
     }
 
-    // Utility method to print the event queue
-    public static void printQueue(EventQueue eventQueue) {
+    // Utility method to print the event queue for tests
+    public void printQueue(EventQueue eventQueue) {
         for (Event event : eventQueue.queueList) {
             System.out.println(event);
         }
@@ -47,9 +47,6 @@ public class EventQueue {
     public EventQueue(Event initialEvent) {
         this.queueList.add(initialEvent);
     }
-
-
-    //EventQueue Excute and sort
 
 
     // This method executes and removes the first event in ArrayList
