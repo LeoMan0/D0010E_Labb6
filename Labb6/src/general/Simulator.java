@@ -9,7 +9,7 @@ public class Simulator {
 
     public static void main(String[] args) {
         // Initialize your StoreState here
-        StoreState storeState = new StoreState(1, 1234L, 5, 10f, 1, 5, 0.5f, 0.1f, 2, 3);
+        StoreState storeState = new StoreState(1, 1234L, 5, 10f, 1, 5, 2, 3, 0.5f, 1);
 
         Simulator simulator = new Simulator(storeState);
         simulator.start(); // Start the simulation
