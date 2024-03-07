@@ -20,7 +20,10 @@ public class StoreView extends View {
     public void update(Observable o, Object arg) {
 
 
-        System.out.printf("%.2f %s %s %s\n", storeState.getTimePassed(), storeState.getEventName(), storeState.getCustomerId(), storeState.getMissedCustomers());
+        //System.out.printf("%.2f %s %s %s\n", storeState.getTimePassed(), storeState.getEventName(), storeState.getCustomerId(), storeState.getMissedCustomers());
+        if (storeState.getEventName() == "PayEvent") {
+            System.out.printf("%.2f %s %s %s\n", storeState.getTimePassed(), storeState.getEventName(), storeState.getCustomerId(), storeState.getMissedCustomers());
+        }
     }
 
     public void printSimulationParameters() {

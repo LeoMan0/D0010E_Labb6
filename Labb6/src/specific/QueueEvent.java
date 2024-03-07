@@ -21,16 +21,22 @@ public class QueueEvent extends Event {
 
         specificState.setCustomerId(customer.getCustomerId());
         specificState.setEventName(this.nameOfCurrentEvent);
-        float next = scheduleNextEventTime();
 
-        return new PayEvent(next, (MakeCustomer) this.getEventTarget(), (StoreState) this.getState());
+
+        if (specificState.getCheckoutsOpen() != 0) {
+            specificState.decreaseCheckOutsOpen();
+
+            float next = scheduleNextEventTime();
+            return new PayEvent(next, (MakeCustomer) this.getEventTarget(), (StoreState) this.getState());
+        } else {
+            specificState.getCheckOutQueue().addCustomerToQueue(customer);
+            return null;
+        }
     }
 
     public float scheduleNextEventTime() {
-        //This number is a random number in a range.
-        // This is the pay time. Can be taken from state.
-        System.out.println(customer.getTimeToPay());
         return time + customer.getTimeToPay();
+
 
     }
 

@@ -25,8 +25,13 @@ public class PayEvent extends Event {
         specificState.setEventName(this.nameOfCurrentEvent);
 
         specificState.decreaseCurrentCapacity();
+        specificState.increaseCheckOutsOpen();
 
-        return null;
+        if (specificState.getCheckOutQueue().isEmpty()) {
+            return null;
+        } else {
+            return new QueueEvent(this.time, specificState.getCheckOutQueue().nextCustomer(), (StoreState) this.getState());
+        }
     }
 
 

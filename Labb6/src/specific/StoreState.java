@@ -12,6 +12,7 @@ public class StoreState extends State {
 
     private int missedCustomers;
 
+    private CheckOutQueue checkOutQueue = new CheckOutQueue();
 
     //Stuff for event-----------------------------
     private long seed;
@@ -19,6 +20,7 @@ public class StoreState extends State {
     private int maxCapacityInStore;
 
     private int currentCapacityInStore = 0;
+
 
     // The checkouts pay time are assumed to be uniformly distributed within an interval [min max]
     //  And likewise for the time it takes for customers to pay
@@ -59,6 +61,14 @@ public class StoreState extends State {
 
     public int getCheckoutsOpen() {
         return checkoutsOpen;
+    }
+
+    public void increaseCheckOutsOpen() {
+        ++this.checkoutsOpen;
+    }
+
+    public void decreaseCheckOutsOpen() {
+        --this.checkoutsOpen;
     }
 
 
@@ -133,4 +143,9 @@ public class StoreState extends State {
     public void increaseMissedCustomers() {
         ++this.missedCustomers;
     }
+
+    public CheckOutQueue getCheckOutQueue() {
+        return checkOutQueue;
+    }
+
 }
