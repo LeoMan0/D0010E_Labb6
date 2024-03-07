@@ -5,20 +5,28 @@ import general.Event;
 import java.util.Queue;
 
 public class PickEvent extends Event {
+    StoreState specificState;
+    MakeCustomer customer;
 
-    public PickEvent(float time, MakeCustomer customer) {
-        super(time, customer);
+    public PickEvent(float time, MakeCustomer customer, StoreState storeState) {
+        super(time, customer, storeState);
         this.nameOfCurrentEvent = "PickEvent";
     }
 
     // In this excute we have to make it so that customer is added to the queue
     @Override
     public Event execute() {
+        this.state.setTimePassed(this.getTime());
+
+        specificState = (StoreState) this.state;
+        customer = (MakeCustomer) this.eventTarget;
+
+        specificState.setCustomerId(customer.getCustomerId());
+        specificState.setEventName(this.nameOfCurrentEvent);
 
 
         float next = scheduleNextEventTime();
-
-        return new QueueEvent(next, (MakeCustomer) this.getEventTarget());
+        return new QueueEvent(next, (MakeCustomer) this.getEventTarget(), (StoreState) this.getState());
     }
 
 

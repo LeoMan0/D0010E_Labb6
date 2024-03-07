@@ -32,7 +32,7 @@ public class Simulator {
 
         // Convert all MakeCustomer instances to ArrivalEvents and add them to the event queue
         for (MakeCustomer customer : allCustomers) {
-            ArrivalEvent arrivalEvent = new ArrivalEvent(customer.getArrivalTime(), customer);
+            ArrivalEvent arrivalEvent = new ArrivalEvent(customer.getArrivalTime(), customer, storeState);
             eventQueue.addInsert(arrivalEvent);
         }
 
@@ -43,8 +43,6 @@ public class Simulator {
             eventQueue.executeAndInsert();
         }
     }
-
-    // Main method to run the simulation
 
 
 }

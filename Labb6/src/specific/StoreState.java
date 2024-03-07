@@ -6,8 +6,12 @@ public class StoreState extends State {
     // StoreState is the state the simulation is in
     // But it is also here setting for how the simulation will be run is.
     //
+    //Stuff for event-----------------------------
+    private String eventName;
+    private int customerId;
 
 
+    //Stuff for event-----------------------------
     private long seed;
     private int checkoutsOpen;
     private int maxCapacityInStore;
@@ -90,7 +94,7 @@ public class StoreState extends State {
     }
 
     public int getCurrentCapacityInStore() {
-        return getCurrentCapacityInStore();
+        return this.currentCapacityInStore;
     }
 
     public void decreaseCurrentCapacity() {
@@ -104,4 +108,19 @@ public class StoreState extends State {
     //Here follows the print methods
 
 
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
+
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
 }

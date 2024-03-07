@@ -23,10 +23,13 @@ public abstract class Event {
 
     protected Object eventTarget;
 
+    protected State state;
 
-    public Event(float time, Object eventTarget) {
+
+    public Event(float time, Object eventTarget, State state) {
         this.time = time;
         this.eventTarget = eventTarget;
+        this.state = state;
     }
 
     public abstract Event execute();
@@ -38,6 +41,10 @@ public abstract class Event {
 
     public Object getEventTarget() {
         return this.eventTarget;
+    }
+
+    public State getState() {
+        return state;
     }
 
     //This method is just used to run tests

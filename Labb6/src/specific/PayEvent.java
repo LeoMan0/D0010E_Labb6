@@ -3,9 +3,11 @@ package specific;
 import general.Event;
 
 public class PayEvent extends Event {
+    StoreState specificState;
+    MakeCustomer customer;
 
-    public PayEvent(float time, MakeCustomer customer) {
-        super(time, customer);
+    public PayEvent(float time, MakeCustomer customer, StoreState state) {
+        super(time, customer, state);
         this.nameOfCurrentEvent = "PayEvent";
 
     }
@@ -14,7 +16,13 @@ public class PayEvent extends Event {
     //Unless we can use this someway so that a customer can enter idk
     @Override
     public Event execute() {
+        this.state.setTimePassed(this.getTime());
 
+        specificState = (StoreState) this.state;
+        customer = (MakeCustomer) this.eventTarget;
+
+        specificState.setCustomerId(customer.getCustomerId());
+        specificState.setEventName(this.nameOfCurrentEvent);
 
         return null;
     }

@@ -41,7 +41,6 @@ public class EventQueue {
 
         // Remove the first event from the queue and execute it
         this.state.notifyView();
-        this.state.setTimePassed(queueList.get(0).getTime());
         Event executedEvent = this.queueList.remove(0).execute();
 
 
@@ -51,6 +50,9 @@ public class EventQueue {
     }
 
     public void addInsert(Event addEvent) {
+        if (addEvent == null) {
+            return;
+        }
 
         float addEventTime = addEvent.getTime();
 

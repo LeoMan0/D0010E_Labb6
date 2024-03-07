@@ -19,7 +19,8 @@ public class StoreView extends View {
     @Override
     public void update(Observable o, Object arg) {
 
-        System.out.println(storeState.getTimePassed());
+
+        System.out.printf("%.2f %s %d \n", storeState.getTimePassed(), storeState.getEventName(), storeState.getCustomerId());
     }
 
     public void printSimulationParameters() {
