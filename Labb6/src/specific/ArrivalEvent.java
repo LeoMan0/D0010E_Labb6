@@ -22,7 +22,9 @@ public class ArrivalEvent extends Event {
         specificState.setEventName(this.nameOfCurrentEvent);
 
         if (specificState.getCurrentCapacityInStore() == specificState.getMaxCapacityInStore()) {
+            specificState.increaseMissedCustomers();
             return null;
+
         }
         specificState.increaseCurrentCapacity();
         float next = scheduleNextEventTime();

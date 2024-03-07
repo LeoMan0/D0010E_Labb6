@@ -24,6 +24,8 @@ public class PayEvent extends Event {
         specificState.setCustomerId(customer.getCustomerId());
         specificState.setEventName(this.nameOfCurrentEvent);
 
+        specificState.decreaseCurrentCapacity();
+
         return null;
     }
 

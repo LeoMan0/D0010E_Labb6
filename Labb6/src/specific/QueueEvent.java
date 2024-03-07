@@ -29,7 +29,8 @@ public class QueueEvent extends Event {
     public float scheduleNextEventTime() {
         //This number is a random number in a range.
         // This is the pay time. Can be taken from state.
-        return ++time;
+        System.out.println(customer.getTimeToPay());
+        return time + customer.getTimeToPay();
 
     }
 

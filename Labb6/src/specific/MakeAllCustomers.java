@@ -34,7 +34,7 @@ public class MakeAllCustomers {
         UniformRandomStream generatePickTime = new UniformRandomStream(storeState.getMinPickTime(), storeState.getMaxPickTime(), storeState.getSeed());
 
         double payTimes;
-        UniformRandomStream generatePayTime = new UniformRandomStream(storeState.getMinPayTime(), storeState.getMinPayTime(), storeState.getSeed());
+        UniformRandomStream generatePayTime = new UniformRandomStream(storeState.getMinPayTime(), storeState.getMaxPayTime(), storeState.getSeed());
 
         int customerId = -1;
 

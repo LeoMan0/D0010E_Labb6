@@ -10,6 +10,8 @@ public class StoreState extends State {
     private String eventName;
     private int customerId;
 
+    private int missedCustomers;
+
 
     //Stuff for event-----------------------------
     private long seed;
@@ -122,5 +124,13 @@ public class StoreState extends State {
 
     public int getCustomerId() {
         return customerId;
+    }
+
+    public int getMissedCustomers() {
+        return missedCustomers;
+    }
+
+    public void increaseMissedCustomers() {
+        ++this.missedCustomers;
     }
 }
