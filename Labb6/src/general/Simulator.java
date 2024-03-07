@@ -2,13 +2,21 @@ package general;
 
 
 import specific.ArrivalEvent;
+import specific.StoreState;
+import specific.StoreView;
 
 public class Simulator {
 
     public static void main(String[] args) {
         // Create an initial event and an event queue
-        Event initialEvent = new ArrivalEvent(0, 0);
-        EventQueue eventQueue = new EventQueue(initialEvent);
+
+        State storeState = new StoreState(1, 1, 1, 1, 1, 1, 1, 1);
+        StoreView storeView = new StoreView(storeState);
+
+        storeState.addObserver(storeView);
+
+
+        EventQueue eventQueue = new EventQueue(storeState);
 
         // Add more events for testing
 
@@ -18,15 +26,13 @@ public class Simulator {
         }
 
 
-        System.out.println("Initial Queue:");
-        eventQueue.printQueue(eventQueue);
-        int numberOfExecutions = 4;
+        int numberOfExecutions = 6;
 
         for (int i = 1; i <= numberOfExecutions; i++) {
             eventQueue.executeAndInsert();
-            System.out.println("\nQueue after " + i + " executeAndInsert:");
-            eventQueue.printQueue(eventQueue);
         }
+
+
     }
 
 

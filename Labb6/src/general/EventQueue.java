@@ -8,27 +8,6 @@ public class EventQueue {
 
     //Just here to test stuff
     public static void main(String[] args) {
-        // Create an initial event and an event queue
-        Event initialEvent = new ArrivalEvent(0, 0);
-        EventQueue eventQueue = new EventQueue(initialEvent);
-
-        // Add more events for testing
-
-        int customerAmount = 6;
-        for (int i = 1; i < customerAmount; i++) {
-            eventQueue.addInsert(new ArrivalEvent(i, i));
-        }
-
-
-        System.out.println("Initial Queue:");
-        eventQueue.printQueue(eventQueue);
-        int numberOfExecutions = 4;
-
-        for (int i = 1; i <= numberOfExecutions; i++) {
-            eventQueue.executeAndInsert();
-            System.out.println("\nQueue after " + i + " executeAndInsert:");
-            eventQueue.printQueue(eventQueue);
-        }
 
     }
 
@@ -42,10 +21,10 @@ public class EventQueue {
     //Creating a List such that
     // {Event,Event,Event,etc}
     ArrayList<Event> queueList = new ArrayList<>();
+    private State state;
 
-
-    public EventQueue(Event initialEvent) {
-        this.queueList.add(initialEvent);
+    public EventQueue(State state) {
+        this.state = state;
     }
 
 
@@ -61,7 +40,9 @@ public class EventQueue {
         if (queueList.isEmpty()) return; // Guard against an empty list
 
         // Remove the first event from the queue and execute it
+        this.state.notifyView();
         Event executedEvent = this.queueList.remove(0).execute();
+
 
         // Use addInsert to add the executed event into the queue at the correct position based on its time
         addInsert(executedEvent);

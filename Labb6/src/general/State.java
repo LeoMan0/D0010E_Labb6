@@ -45,7 +45,7 @@ public abstract class State extends Observable {
     /*
      * @param event notify about the event in use to observer
      */
-    public void notify(Event event) {
+    public void notifyView() {
         setChanged();
         notifyObservers();
     }
