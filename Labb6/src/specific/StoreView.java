@@ -7,15 +7,36 @@ import java.util.Observable;
 
 public class StoreView extends View {
 
-    private State StoreState;
+    private StoreState storeState;
 
-    public StoreView(State StoreState) {
-        this.StoreState = StoreState;
-        StoreState.addObserver(this);
+    public StoreView(StoreState storeState) {
+        this.storeState = storeState;
+        storeState.addObserver(this);
+        this.printSimulationParameters();
+        this.printEventHeaders();
     }
 
     @Override
     public void update(Observable o, Object arg) {
+
         System.out.println("Success");
+    }
+
+    public void printSimulationParameters() {
+        System.out.println("PARAMETRAR");
+        System.out.println("==========");
+        System.out.println("Antal kassor, N..........: " + this.storeState.getCheckoutsOpen());
+        System.out.println("Max som ryms, M..........: " + this.storeState.getMaxCapacityInStore());
+        // Assuming an attribute for arrival rate (lambda) exists, otherwise, you'll need to add it
+        System.out.println("Ankomshastighet, lambda..: " + "Blank for now");
+        System.out.println("Plocktider, [P_min..Pmax]: [" + this.storeState.getMinPickTime() + ".." + this.storeState.getMaxPickTime() + "]");
+        System.out.println("Betaltider, [K_min..Kmax]: [" + this.storeState.getMinPayTime() + ".." + this.storeState.getMaxPayTime() + "]");
+        System.out.println("Frö, f...................: " + this.storeState.getSeed());
+    }
+
+    public void printEventHeaders() {
+        System.out.println("\nFÖRLOPP");
+        System.out.println("=======");
+        System.out.println("Tid Händelse Kund ? led ledT I $ :-( köat köT köar [Kassakö..]");
     }
 }

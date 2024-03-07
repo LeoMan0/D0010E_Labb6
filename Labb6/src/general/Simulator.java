@@ -10,7 +10,7 @@ public class Simulator {
     public static void main(String[] args) {
         // Create an initial event and an event queue
 
-        State storeState = new StoreState(1, 1, 1, 1, 1, 1, 1, 1);
+        StoreState storeState = new StoreState(1, 1, 1, 1, 1, 1, 1, 1);
         StoreView storeView = new StoreView(storeState);
 
         storeState.addObserver(storeView);
@@ -26,10 +26,11 @@ public class Simulator {
         }
 
 
-        int numberOfExecutions = 6;
+        int numberOfExecutions = 0;
 
         for (int i = 1; i <= numberOfExecutions; i++) {
             eventQueue.executeAndInsert();
+            eventQueue.printQueue(eventQueue);
         }
 
 

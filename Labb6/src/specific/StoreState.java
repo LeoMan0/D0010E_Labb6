@@ -87,4 +87,8 @@ public class StoreState extends State {
     public void increaseCurrentCapacity() {
         this.currentCapacityInStore++;
     }
+
+    //Here follows the print methods
+
+
 }
