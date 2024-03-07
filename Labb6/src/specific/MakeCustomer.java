@@ -3,14 +3,13 @@ package specific;
 public class MakeCustomer {
 
 
-    //Time is with eventState to be able to order EventQueque in the order of event
-    float time;
     float arrivalTime, timeToPick, timeToPay, timeMaxWait;
-
+    int customerId;
 
     boolean inStore;
 
-    public MakeCustomer(float arrivalTime, float timeToPick, float timeToPay, float timeMaxWait) {
+    public MakeCustomer(int customerId, float arrivalTime, float timeToPick, float timeToPay, float timeMaxWait) {
+        this.customerId = customerId;
         this.arrivalTime = arrivalTime;
         this.timeToPick = timeToPick;
         this.timeToPay = timeToPay;

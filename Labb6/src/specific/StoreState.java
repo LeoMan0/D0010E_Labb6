@@ -16,11 +16,11 @@ public class StoreState extends State {
 
     // The checkouts pay time are assumed to be uniformly distributed within an interval [min max]
     //  And likewise for the time it takes for customers to pay
-    private float minPayTime;
-    private float maxPayTime;
+    private double minPayTime;
+    private double maxPayTime;
 
-    private float minPickTime;
-    private float maxPickTime;
+    private double minPickTime;
+    private double maxPickTime;
 
     private float closeStoreTime;
 
@@ -52,22 +52,22 @@ public class StoreState extends State {
     }
 
 
-    public float getMinPayTime() {
+    public double getMinPayTime() {
         return minPayTime;
     }
 
 
-    public float getMaxPayTime() {
+    public double getMaxPayTime() {
         return maxPayTime;
     }
 
 
-    public float getMinPickTime() {
+    public double getMinPickTime() {
         return minPickTime;
     }
 
 
-    public float getMaxPickTime() {
+    public double getMaxPickTime() {
         return maxPickTime;
     }
 
