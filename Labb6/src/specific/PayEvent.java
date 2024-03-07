@@ -4,8 +4,8 @@ import general.Event;
 
 public class PayEvent extends Event {
 
-    public PayEvent(float time, int customerName) {
-        super(time, customerName);
+    public PayEvent(float time, MakeCustomer customer) {
+        super(time, customer);
         this.nameOfCurrentEvent = "PayEvent";
 
     }

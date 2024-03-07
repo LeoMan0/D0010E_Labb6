@@ -21,10 +21,10 @@ public abstract class Event {
 
     protected String nameOfCurrentEvent;
 
-    protected int eventTarget;
+    protected Object eventTarget;
 
 
-    public Event(float time, int eventTarget) {
+    public Event(float time, Object eventTarget) {
         this.time = time;
         this.eventTarget = eventTarget;
     }
@@ -36,7 +36,7 @@ public abstract class Event {
         return this.time;
     }
 
-    public int getEventTarget() {
+    public Object getEventTarget() {
         return this.eventTarget;
     }
 

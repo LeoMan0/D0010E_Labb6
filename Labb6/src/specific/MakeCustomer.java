@@ -32,5 +32,7 @@ public class MakeCustomer {
         return timeMaxWait;
     }
 
-
+    public int getCustomerId() {
+        return customerId;
+    }
 }

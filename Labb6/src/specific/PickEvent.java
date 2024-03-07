@@ -6,8 +6,8 @@ import java.util.Queue;
 
 public class PickEvent extends Event {
 
-    public PickEvent(float time, int customerName) {
-        super(time, customerName);
+    public PickEvent(float time, MakeCustomer customer) {
+        super(time, customer);
         this.nameOfCurrentEvent = "PickEvent";
     }
 
@@ -18,7 +18,7 @@ public class PickEvent extends Event {
 
         float next = scheduleNextEventTime();
 
-        return new QueueEvent(next, this.getEventTarget());
+        return new QueueEvent(next, (MakeCustomer) this.getEventTarget());
     }
 
 

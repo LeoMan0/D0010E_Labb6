@@ -5,8 +5,8 @@ import general.Event;
 public class EnterEvent extends Event {
 
 
-    public EnterEvent(float time, int customerNumber) {
-        super(time, customerNumber);
+    public EnterEvent(float time, MakeCustomer customer) {
+        super(time, customer);
         this.nameOfCurrentEvent = "EnterEvent";
     }
 
@@ -16,7 +16,7 @@ public class EnterEvent extends Event {
 
         float next = scheduleNextEventTime();
 
-        return new PickEvent(next, this.getEventTarget());
+        return new PickEvent(next, (MakeCustomer) this.getEventTarget());
     }
 
     public float scheduleNextEventTime() {

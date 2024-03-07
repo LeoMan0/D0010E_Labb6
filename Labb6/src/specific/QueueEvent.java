@@ -4,8 +4,8 @@ import general.Event;
 
 public class QueueEvent extends Event {
 
-    public QueueEvent(float time, int customerName) {
-        super(time, customerName);
+    public QueueEvent(float time, MakeCustomer customer) {
+        super(time, customer);
         this.nameOfCurrentEvent = "QueueEvent";
     }
 
@@ -16,7 +16,7 @@ public class QueueEvent extends Event {
 
         float next = scheduleNextEventTime();
 
-        return new PayEvent(next, this.getEventTarget());
+        return new PayEvent(next, (MakeCustomer) this.getEventTarget());
     }
 
     public float scheduleNextEventTime() {

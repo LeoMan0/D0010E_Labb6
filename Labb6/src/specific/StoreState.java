@@ -8,7 +8,7 @@ public class StoreState extends State {
     //
 
 
-    private int seed;
+    private long seed;
     private int checkoutsOpen;
     private int maxCapacityInStore;
 
@@ -16,6 +16,8 @@ public class StoreState extends State {
 
     // The checkouts pay time are assumed to be uniformly distributed within an interval [min max]
     //  And likewise for the time it takes for customers to pay
+
+    private double lambda;
     private double minPayTime;
     private double maxPayTime;
 
@@ -24,8 +26,11 @@ public class StoreState extends State {
 
     private float closeStoreTime;
 
+    private float maxWaitTime;
 
-    public StoreState(int seed, float closeStoreTime, int checkoutsOpen, int maxCapacityInStore, float minPayTime, float maxPayTime, float minPickTime, float maxPickTime) {
+
+    public StoreState(double lambda, long seed, float maxWaitTime, float closeStoreTime, int checkoutsOpen, int maxCapacityInStore, float minPayTime, float maxPayTime, float minPickTime, float maxPickTime) {
+        this.lambda = lambda;
         this.seed = seed;
         this.closeStoreTime = closeStoreTime;
         this.checkoutsOpen = checkoutsOpen;
@@ -34,13 +39,17 @@ public class StoreState extends State {
         this.maxPayTime = maxPayTime;
         this.minPickTime = minPickTime;
         this.maxPickTime = maxPickTime;
+        this.maxWaitTime = maxWaitTime;
     }
 
 
-    public int getSeed() {
+    public long getSeed() {
         return seed;
     }
 
+    public double getLambda() {
+        return lambda;
+    }
 
     public int getCheckoutsOpen() {
         return checkoutsOpen;
@@ -74,6 +83,10 @@ public class StoreState extends State {
 
     public float getCloseStoreTime() {
         return closeStoreTime;
+    }
+
+    public float getMaxWaitTime() {
+        return maxWaitTime;
     }
 
     public int getCurrentCapacityInStore() {
