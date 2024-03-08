@@ -24,7 +24,7 @@ public class StoreView extends View {
 //        if (storeState.getEventName() != "EnterEvent" && storeState.getEventName() != "QueueEvent") {
 //            System.out.printf("%.2f %s %s %s\n", storeState.getTimePassed(), storeState.getEventName(), storeState.getCustomerId(), storeState.getCheckoutsOpen(), storeState.getMissedCustomers(), storeState.getCurrentCapacityInStore(), "x", storeState.getMissedCustomers());
 //        }
-        if (storeState.getEventName() != "Entre" && storeState.getEventName() != "QueueEvent") {
+        if (storeState.getEventName() != "Entre" && storeState.getEventName() != "QueueEvent" && storeState.getEventName() != "Lämnar") {
 
             System.out.printf("%-6.2f %-10s %-5d %-4s %-5d %-7.2f %-4s %-4d %d \n",
                     storeState.getTimePassed(),

@@ -23,6 +23,12 @@ public class EnterEvent extends Event {
         specificState.setCustomerId(customer.getCustomerId());
         specificState.setEventName(this.nameOfCurrentEvent);
 
+        if (specificState.getCurrentCapacityInStore() == specificState.getMaxCapacityInStore()) {
+            specificState.increaseMissedCustomers();
+            return null;
+
+        }
+        specificState.increaseCurrentCapacity();
         float next = scheduleNextEventTime();
         return new PickEvent(next, (MakeCustomer) this.getEventTarget(), (StoreState) this.getState());
     }
