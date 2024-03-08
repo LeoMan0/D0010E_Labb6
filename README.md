@@ -23,6 +23,6 @@ Figure out how the queue for the checkout is supposed to work with EventQueue. A
 - [ ] StoreState
 - [x] State
 - [x] View
-- [] StoreView  
+- [ ] StoreView  
 - [ ] Everything else
 
