@@ -21,9 +21,13 @@ public class StoreView extends View {
 
 
         //System.out.printf("%.2f %s %s %s\n", storeState.getTimePassed(), storeState.getEventName(), storeState.getCustomerId(), storeState.getMissedCustomers());
-        if (storeState.getEventName() == "PayEvent") {
-            System.out.printf("%.2f %s %s %s\n", storeState.getTimePassed(), storeState.getEventName(), storeState.getCustomerId(), storeState.getMissedCustomers());
+//        if (storeState.getEventName() != "EnterEvent" && storeState.getEventName() != "QueueEvent") {
+//            System.out.printf("%.2f %s %s %s\n", storeState.getTimePassed(), storeState.getEventName(), storeState.getCustomerId(), storeState.getCheckoutsOpen(), storeState.getMissedCustomers(), storeState.getCurrentCapacityInStore(), "x", storeState.getMissedCustomers());
+//        }
+        if (storeState.getEventName() != "EnterEvent" && storeState.getEventName() != "QueueEvent") {
+            System.out.printf("%.2f %s %s %s, %s, %s\n", storeState.getTimePassed(), storeState.getEventName(), storeState.getCustomerId(), storeState.getCheckoutsOpen(), storeState.getMissedCustomers(), storeState.getCurrentCapacityInStore());
         }
+
     }
 
     public void printSimulationParameters() {
@@ -32,7 +36,7 @@ public class StoreView extends View {
         System.out.println("Antal kassor, N..........: " + this.storeState.getCheckoutsOpen());
         System.out.println("Max som ryms, M..........: " + this.storeState.getMaxCapacityInStore());
         // Assuming an attribute for arrival rate (lambda) exists, otherwise, you'll need to add it
-        System.out.println("Ankomshastighet, lambda..: " + "Blank for now");
+        System.out.println("Ankomshastighet, lambda..: " + this.storeState.getLambda());
         System.out.println("Plocktider, [P_min..Pmax]: [" + this.storeState.getMinPickTime() + ".." + this.storeState.getMaxPickTime() + "]");
         System.out.println("Betaltider, [K_min..Kmax]: [" + this.storeState.getMinPayTime() + ".." + this.storeState.getMaxPayTime() + "]");
         System.out.println("Frö, f...................: " + this.storeState.getSeed());

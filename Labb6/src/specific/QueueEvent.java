@@ -35,7 +35,7 @@ public class QueueEvent extends Event {
     }
 
     public float scheduleNextEventTime() {
-        return time + customer.getTimeToPay();
+        return time + (float) specificState.getPayTime();
 
 
     }

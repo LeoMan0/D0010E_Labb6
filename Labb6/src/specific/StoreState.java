@@ -2,6 +2,8 @@ package specific;
 
 import general.State;
 
+import random.*;
+
 public class StoreState extends State {
     // StoreState is the state the simulation is in
     // But it is also here setting for how the simulation will be run is.
@@ -14,8 +16,12 @@ public class StoreState extends State {
 
     private CheckOutQueue checkOutQueue = new CheckOutQueue();
 
+    private UniformRandomStream pickTime;
+
+    private UniformRandomStream payTime;
+
     //Stuff for event-----------------------------
-    private long seed;
+    private int seed;
     private int checkoutsOpen;
     private int maxCapacityInStore;
 
@@ -37,7 +43,7 @@ public class StoreState extends State {
     private float maxWaitTime;
 
 
-    public StoreState(double lambda, long seed, float maxWaitTime, float closeStoreTime, int checkoutsOpen, int maxCapacityInStore, float minPayTime, float maxPayTime, float minPickTime, float maxPickTime) {
+    public StoreState(double lambda, int seed, float maxWaitTime, float closeStoreTime, int checkoutsOpen, int maxCapacityInStore, double minPayTime, double maxPayTime, double minPickTime, double maxPickTime) {
         this.lambda = lambda;
         this.seed = seed;
         this.closeStoreTime = closeStoreTime;
@@ -48,6 +54,9 @@ public class StoreState extends State {
         this.minPickTime = minPickTime;
         this.maxPickTime = maxPickTime;
         this.maxWaitTime = maxWaitTime;
+
+        pickTime = new UniformRandomStream(minPickTime, maxPickTime, seed);
+        payTime = new UniformRandomStream(minPayTime, maxPayTime, seed);
     }
 
 
@@ -148,4 +157,14 @@ public class StoreState extends State {
         return checkOutQueue;
     }
 
+    //test
+
+
+    public double getPickTime() {
+        return pickTime.next();
+    }
+
+    public double getPayTime() {
+        return payTime.next();
+    }
 }

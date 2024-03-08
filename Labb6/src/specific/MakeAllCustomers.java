@@ -10,7 +10,7 @@ public class MakeAllCustomers {
     //Test Passed
     public static void main(String[] args) {
 
-        StoreState storeState = new StoreState(1, 1234L, 5, 10f, 1, 5, 0.5f, 0.1f, 2, 3);
+        StoreState storeState = new StoreState(1, 1234, 5, 10f, 1, 5, 0.5f, 0.1f, 2, 3);
 
         // Initialize simulation with StoreState
         MakeAllCustomers simulation = new MakeAllCustomers(storeState);

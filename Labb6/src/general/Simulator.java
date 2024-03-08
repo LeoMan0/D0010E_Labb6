@@ -9,8 +9,8 @@ public class Simulator {
 
     public static void main(String[] args) {
         // Initialize your StoreState here
-        //StoreState storeState = new StoreState(1, 1234L, 5, 10f, 2, 5, 2, 3, 0.5f, 1);
-        StoreState storeState = new StoreState(3.0, 13L, 5, 8f, 2, 7, 0.35f, 0.6f, 0.6f, 0.9f);
+        StoreState storeState = new StoreState(1, 1234, 5, 100f, 2, 5, 2, 3, 0.5f, 1);
+        //StoreState storeState = new StoreState(3.0, 13, 5, 8f, 2, 7, 0.35f, 0.6f, 0.6f, 0.9f);
 
         Simulator simulator = new Simulator(storeState);
         simulator.start(); // Start the simulation

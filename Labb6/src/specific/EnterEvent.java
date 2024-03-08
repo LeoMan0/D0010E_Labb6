@@ -30,7 +30,7 @@ public class EnterEvent extends Event {
     public float scheduleNextEventTime() {
         //This number is a random number in a range.
         // This is the pick time. Can be taken from state.
-        return time + customer.getTimeToPick();
+        return time + (float) specificState.getPickTime();
 
     }
 

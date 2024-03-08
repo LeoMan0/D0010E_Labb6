@@ -40,9 +40,9 @@ public class EventQueue {
         if (queueList.isEmpty()) return; // Guard against an empty list
 
         // Remove the first event from the queue and execute it
-        this.state.notifyView();
+        
         Event executedEvent = this.queueList.remove(0).execute();
-
+        this.state.notifyView();
 
         // Use addInsert to add the executed event into the queue at the correct position based on its time
         addInsert(executedEvent);
