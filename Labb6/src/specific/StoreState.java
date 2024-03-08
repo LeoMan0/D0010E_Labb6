@@ -42,10 +42,8 @@ public class StoreState extends State {
 
     private float closeStoreTime;
 
-    private float maxWaitTime;
 
-
-    public StoreState(double lambda, int seed, float maxWaitTime, float closeStoreTime, int checkoutsOpen, int maxCapacityInStore, double minPayTime, double maxPayTime, double minPickTime, double maxPickTime) {
+    public StoreState(double lambda, int seed, float closeStoreTime, int checkoutsOpen, int maxCapacityInStore, double minPayTime, double maxPayTime, double minPickTime, double maxPickTime) {
         this.lambda = lambda;
         this.seed = seed;
         this.closeStoreTime = closeStoreTime;
@@ -55,7 +53,6 @@ public class StoreState extends State {
         this.maxPayTime = maxPayTime;
         this.minPickTime = minPickTime;
         this.maxPickTime = maxPickTime;
-        this.maxWaitTime = maxWaitTime;
 
         pickTime = new UniformRandomStream(minPickTime, maxPickTime, seed);
         payTime = new UniformRandomStream(minPayTime, maxPayTime, seed);
@@ -112,9 +109,6 @@ public class StoreState extends State {
         return closeStoreTime;
     }
 
-    public float getMaxWaitTime() {
-        return maxWaitTime;
-    }
 
     public int getCurrentCapacityInStore() {
         return this.currentCapacityInStore;

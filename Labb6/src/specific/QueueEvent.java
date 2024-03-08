@@ -6,8 +6,7 @@ public class QueueEvent extends Event {
 
     // This class is basically redundant or rather PayEvent is but here we are.
 
-    StoreState specificState;
-    MakeCustomer customer;
+    private StoreState specificState;
 
     public QueueEvent(float time, MakeCustomer customer, StoreState storeState) {
         super(time, customer, storeState);
@@ -20,7 +19,7 @@ public class QueueEvent extends Event {
         this.state.setTimePassed(this.getTime());
 
         specificState = (StoreState) this.state;
-        customer = (MakeCustomer) this.eventTarget;
+        MakeCustomer customer = (MakeCustomer) this.eventTarget;
 
         specificState.setCustomerId(customer.getCustomerId());
         specificState.setEventName(this.nameOfCurrentEvent);

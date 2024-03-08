@@ -3,8 +3,6 @@ package specific;
 import general.*;
 
 public class ArrivalEvent extends Event {
-    StoreState specificState;
-    MakeCustomer customer;
 
     public ArrivalEvent(float time, MakeCustomer customer, StoreState storeState) {
         super(time, customer, storeState);
@@ -15,8 +13,8 @@ public class ArrivalEvent extends Event {
     public Event execute() {
         this.state.setTimePassed(this.getTime());
 
-        specificState = (StoreState) this.state;
-        customer = (MakeCustomer) this.eventTarget;
+        StoreState specificState = (StoreState) this.state;
+        MakeCustomer customer = (MakeCustomer) this.eventTarget;
 
         specificState.setCustomerId(customer.getCustomerId());
         specificState.setEventName(this.nameOfCurrentEvent);

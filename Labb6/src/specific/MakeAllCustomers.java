@@ -10,7 +10,7 @@ public class MakeAllCustomers {
     //Test Passed
     public static void main(String[] args) {
 
-        StoreState storeState = new StoreState(1, 1234, 5, 10f, 1, 5, 0.5f, 0.1f, 2, 3);
+        StoreState storeState = new StoreState(1, 1234, 10f, 1, 5, 0.5f, 0.1f, 2, 3);
 
         // Initialize simulation with StoreState
         MakeAllCustomers simulation = new MakeAllCustomers(storeState);
@@ -18,7 +18,7 @@ public class MakeAllCustomers {
         // Print details for each customer
         for (MakeCustomer customer : simulation.getAllCustomers()) {
             System.out.printf("Customer ID: %d, Arrival Time: %.2f, Pick Time: %.2f, Pay Time: %.2f, Max Wait Time: %.2f\n",
-                    customer.getCustomerId(), customer.getArrivalTime(), customer.getTimeToPick(), customer.getTimeToPay(), customer.getTimeMaxWait());
+                    customer.getCustomerId(), customer.getArrivalTime());
         }
     }
 
@@ -54,7 +54,7 @@ public class MakeAllCustomers {
             float payTimeFloat = (float) payTimes;
 
 
-            this.allCustomers.add(new MakeCustomer(customerId, arrivalTimeFloat, pickTimeFloat, payTimeFloat, storeState.getMaxWaitTime()));
+            this.allCustomers.add(new MakeCustomer(customerId, arrivalTimeFloat));
         }
 
 

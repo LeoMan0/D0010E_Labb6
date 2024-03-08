@@ -3,8 +3,7 @@ package specific;
 import general.Event;
 
 public class EnterEvent extends Event {
-    StoreState specificState;
-    MakeCustomer customer;
+    private StoreState specificState;
 
     public EnterEvent(float time, MakeCustomer customer, StoreState storeState) {
         super(time, customer, storeState);
@@ -18,7 +17,7 @@ public class EnterEvent extends Event {
         this.state.setTimePassed(this.getTime());
 
         specificState = (StoreState) this.state;
-        customer = (MakeCustomer) this.eventTarget;
+        MakeCustomer customer = (MakeCustomer) this.eventTarget;
 
         specificState.setCustomerId(customer.getCustomerId());
         specificState.setEventName(this.nameOfCurrentEvent);

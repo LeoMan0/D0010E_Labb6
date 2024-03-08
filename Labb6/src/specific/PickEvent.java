@@ -5,8 +5,6 @@ import general.Event;
 import java.util.Queue;
 
 public class PickEvent extends Event {
-    StoreState specificState;
-    MakeCustomer customer;
 
     public PickEvent(float time, MakeCustomer customer, StoreState storeState) {
         super(time, customer, storeState);
@@ -18,8 +16,8 @@ public class PickEvent extends Event {
     public Event execute() {
         this.state.setTimePassed(this.getTime());
 
-        specificState = (StoreState) this.state;
-        customer = (MakeCustomer) this.eventTarget;
+        StoreState specificState = (StoreState) this.state;
+        MakeCustomer customer = (MakeCustomer) this.eventTarget;
 
         specificState.setCustomerId(customer.getCustomerId());
         specificState.setEventName(this.nameOfCurrentEvent);
