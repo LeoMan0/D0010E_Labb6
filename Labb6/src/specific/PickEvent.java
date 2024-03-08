@@ -10,7 +10,7 @@ public class PickEvent extends Event {
 
     public PickEvent(float time, MakeCustomer customer, StoreState storeState) {
         super(time, customer, storeState);
-        this.nameOfCurrentEvent = "PickEvent";
+        this.nameOfCurrentEvent = "Plock";
     }
 
     // In this excute we have to make it so that customer is added to the queue

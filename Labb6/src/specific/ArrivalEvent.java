@@ -8,7 +8,7 @@ public class ArrivalEvent extends Event {
 
     public ArrivalEvent(float time, MakeCustomer customer, StoreState storeState) {
         super(time, customer, storeState);
-        this.nameOfCurrentEvent = "ArrivalEvent";
+        this.nameOfCurrentEvent = "Ankomst";
     }
 
     @Override

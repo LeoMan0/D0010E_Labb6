@@ -24,8 +24,21 @@ public class StoreView extends View {
 //        if (storeState.getEventName() != "EnterEvent" && storeState.getEventName() != "QueueEvent") {
 //            System.out.printf("%.2f %s %s %s\n", storeState.getTimePassed(), storeState.getEventName(), storeState.getCustomerId(), storeState.getCheckoutsOpen(), storeState.getMissedCustomers(), storeState.getCurrentCapacityInStore(), "x", storeState.getMissedCustomers());
 //        }
-        if (storeState.getEventName() != "EnterEvent" && storeState.getEventName() != "QueueEvent") {
-            System.out.printf("%.2f %s %s %s, %s, %s\n", storeState.getTimePassed(), storeState.getEventName(), storeState.getCustomerId(), storeState.getCheckoutsOpen(), storeState.getMissedCustomers(), storeState.getCurrentCapacityInStore());
+        if (storeState.getEventName() != "Entre" && storeState.getEventName() != "QueueEvent") {
+
+            System.out.printf("%-6.2f %-10s %-5d %-4s %-5d %-7.2f %-4s %-4d %d \n",
+                    storeState.getTimePassed(),
+                    storeState.getEventName(),
+                    storeState.getCustomerId(),
+                    "ö",
+                    storeState.getCheckoutsOpen(),
+                    storeState.getTimePassed(),
+                    storeState.getCurrentCapacityInStore(),
+                    storeState.getPaidCustomers(),
+                    storeState.getMissedCustomers()
+                    /* Add the remaining variables according to their actual types and intended column widths */
+            );
+
         }
 
     }
@@ -35,7 +48,6 @@ public class StoreView extends View {
         System.out.println("==========");
         System.out.println("Antal kassor, N..........: " + this.storeState.getCheckoutsOpen());
         System.out.println("Max som ryms, M..........: " + this.storeState.getMaxCapacityInStore());
-        // Assuming an attribute for arrival rate (lambda) exists, otherwise, you'll need to add it
         System.out.println("Ankomshastighet, lambda..: " + this.storeState.getLambda());
         System.out.println("Plocktider, [P_min..Pmax]: [" + this.storeState.getMinPickTime() + ".." + this.storeState.getMaxPickTime() + "]");
         System.out.println("Betaltider, [K_min..Kmax]: [" + this.storeState.getMinPayTime() + ".." + this.storeState.getMaxPayTime() + "]");
@@ -45,6 +57,7 @@ public class StoreView extends View {
     public void printEventHeaders() {
         System.out.println("\nFÖRLOPP");
         System.out.println("=======");
-        System.out.println("Tid Händelse Kund ? led ledT I $ :-( köat köT köar [Kassakö..]");
+        System.out.println("Tid    Händelse  Kund   ?   led    ledT    I    $   :-( köat köT köar [Kassakö..]");
+        System.out.println("12345678901234567890123456789012345678901234567890123456789012345678901234567890");
     }
 }

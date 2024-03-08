@@ -8,7 +8,7 @@ public class EnterEvent extends Event {
 
     public EnterEvent(float time, MakeCustomer customer, StoreState storeState) {
         super(time, customer, storeState);
-        this.nameOfCurrentEvent = "EnterEvent";
+        this.nameOfCurrentEvent = "Entre";
     }
 
 

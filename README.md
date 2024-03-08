@@ -14,7 +14,15 @@ EventQueue is mostly done I think. When EventQueue executes an event it now noti
 
 ### Todo
 
-Figure out how the queue for the checkout is supposed to work with EventQueue. Also how the queue into the the store will work with EventQueue. 
+Fix the final prints
+Add simulation results
+
+
+
+Add Close Event (mostly cosmetic)
+Add build sim
+Cleanup
+Optimize
 
 
 - [x] Event 

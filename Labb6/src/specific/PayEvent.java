@@ -8,7 +8,7 @@ public class PayEvent extends Event {
 
     public PayEvent(float time, MakeCustomer customer, StoreState state) {
         super(time, customer, state);
-        this.nameOfCurrentEvent = "PayEvent";
+        this.nameOfCurrentEvent = "Betalning";
 
     }
 
@@ -25,6 +25,14 @@ public class PayEvent extends Event {
 
         specificState.decreaseCurrentCapacity();
         specificState.increaseCheckOutsOpen();
+        specificState.increasePaidCustomers();
+
+
+        // Here is the other implementation of the queue to the checkout
+        // After the customer who currently is paying is done
+        // if there isn't a queue nothing happens
+        // otherwise the customer who is next in queue gets scheduled to pay.
+        // QueueEvent is basically more of a try to pay event
 
         if (specificState.getCheckOutQueue().isEmpty()) {
             return null;

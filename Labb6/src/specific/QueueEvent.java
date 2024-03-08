@@ -3,6 +3,9 @@ package specific;
 import general.Event;
 
 public class QueueEvent extends Event {
+
+    // This class is basically redundant or rather PayEvent is but here we are.
+
     StoreState specificState;
     MakeCustomer customer;
 
@@ -23,6 +26,10 @@ public class QueueEvent extends Event {
         specificState.setEventName(this.nameOfCurrentEvent);
 
 
+        // Here is the implementation of the queue to the checkout
+        // If a checkout is open the customer just pays
+        // If not he is added to the queue
+
         if (specificState.getCheckoutsOpen() != 0) {
             specificState.decreaseCheckOutsOpen();
 
@@ -36,8 +43,6 @@ public class QueueEvent extends Event {
 
     public float scheduleNextEventTime() {
         return time + (float) specificState.getPayTime();
-
-
     }
 
 

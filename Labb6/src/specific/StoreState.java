@@ -14,6 +14,8 @@ public class StoreState extends State {
 
     private int missedCustomers;
 
+    private int paidCustomers;
+
     private CheckOutQueue checkOutQueue = new CheckOutQueue();
 
     private UniformRandomStream pickTime;
@@ -124,6 +126,14 @@ public class StoreState extends State {
 
     public void increaseCurrentCapacity() {
         this.currentCapacityInStore++;
+    }
+
+    public void increasePaidCustomers() {
+        this.paidCustomers++;
+    }
+
+    public int getPaidCustomers() {
+        return paidCustomers;
     }
 
     //Here follows the print methods
