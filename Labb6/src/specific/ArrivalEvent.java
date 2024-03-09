@@ -23,7 +23,10 @@ public class ArrivalEvent extends Event {
 
 
         float next = scheduleNextEventTime();
-        return new EnterEvent(next, (MakeCustomer) this.getEventTarget(), (StoreState) this.getState());
+        if (specificState.getStoreIsOpen()) {
+            return new EnterEvent(next, (MakeCustomer) this.getEventTarget(), (StoreState) this.getState());
+        }
+        return null;
     }
 
     // Here we have to find the time

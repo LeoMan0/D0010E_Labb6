@@ -14,7 +14,6 @@ public class StoreState extends State {
 
 
     private float previousTime = 0;
-    private float queueTimeBegin = 0;
 
     //-Stuff printing-----------------------------
 
@@ -29,6 +28,8 @@ public class StoreState extends State {
     private int totalCustomerWhoHasQueued = 0;
 
     private float checkoutIdleTime = 0;
+
+    private boolean storeIsOpen = true;
 
 
     //----------------------------------------------
@@ -217,9 +218,6 @@ public class StoreState extends State {
         return Arrays.toString(checkOutQueue.toArray());
     }
 
-    public void setQueueTimeBegin(float queueTimeBegin) {
-        this.queueTimeBegin = queueTimeBegin;
-    }
 
     public void setPreviousTime(float previousTime) {
         this.previousTime = previousTime;
@@ -233,13 +231,20 @@ public class StoreState extends State {
         return checkoutIdleTime;
     }
 
-    public void updateTime(float currentTime) {
+    public boolean getStoreIsOpen() {
+        return this.storeIsOpen;
+    }
 
+
+    public void updateTime(float currentTime) {
+        if (currentTime >= this.closeStoreTime) {
+            this.storeIsOpen = false;
+        }
 
         this.setPreviousTime(this.getTimePassed());
         this.setTimePassed(currentTime);
 
-        
+
         setCheckoutIdleTime();
         setTotalQueueTime();
     }

@@ -19,18 +19,13 @@ public class StoreView extends View {
     @Override
     public void update(Observable o, Object arg) {
 
-
-        //System.out.printf("%.2f %s %s %s\n", storeState.getTimePassed(), storeState.getEventName(), storeState.getCustomerId(), storeState.getMissedCustomers());
-//        if (storeState.getEventName() != "EnterEvent" && storeState.getEventName() != "QueueEvent") {
-//            System.out.printf("%.2f %s %s %s\n", storeState.getTimePassed(), storeState.getEventName(), storeState.getCustomerId(), storeState.getCheckoutsOpen(), storeState.getMissedCustomers(), storeState.getCurrentCapacityInStore(), "x", storeState.getMissedCustomers());
-//        }
         if (storeState.getEventName() != "EnterEvent" && storeState.getEventName() != "QueueEvent" && storeState.getEventName() != "LeaveEvent") {
 
             System.out.printf("%-6.2f %-10s %-5d %-4s %-5d %-7.2f %-4s %-4d %-6d %-6d %-6.2f %-7d %s \n",
                     storeState.getTimePassed(),
                     storeState.getEventName(),
                     storeState.getCustomerId(),
-                    "ö",
+                    this.storeOpenPrint(storeState.getStoreIsOpen()),
                     storeState.getCheckoutsOpen(),
                     storeState.getCheckoutIdleTime(),
                     storeState.getCurrentCapacityInStore(),
@@ -40,7 +35,6 @@ public class StoreView extends View {
                     storeState.getTotalQueueTime(),
                     storeState.queueLength(),
                     storeState.getLookInsideCustomerQueue()
-                    /* Add the remaining variables according to their actual types and intended column widths */
             );
 
         }
@@ -63,5 +57,12 @@ public class StoreView extends View {
         System.out.println("=======");
         System.out.println("Tid    Händelse  Kund   ?   led    ledT    I    $   :-(    köat    köT    köar    [Kassakö..]");
 
+    }
+
+    public String storeOpenPrint(boolean storeIsOpen) {
+        if (storeIsOpen) {
+            return "Ö";
+        }
+        return "S";
     }
 }
