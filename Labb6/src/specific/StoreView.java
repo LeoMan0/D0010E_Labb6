@@ -26,7 +26,7 @@ public class StoreView extends View {
 //        }
         if (storeState.getEventName() != "Entre" && storeState.getEventName() != "QueueEvent" && storeState.getEventName() != "Lämnar") {
 
-            System.out.printf("%-6.2f %-10s %-5d %-4s %-5d %-7.2f %-4s %-4d %d \n",
+            System.out.printf("%-6.2f %-10s %-5d %-4s %-5d %-7.2f %-4s %-4d %-4d %-4d %.2f \n",
                     storeState.getTimePassed(),
                     storeState.getEventName(),
                     storeState.getCustomerId(),
@@ -35,7 +35,9 @@ public class StoreView extends View {
                     storeState.getTimePassed(),
                     storeState.getCurrentCapacityInStore(),
                     storeState.getPaidCustomers(),
-                    storeState.getMissedCustomers()
+                    storeState.getMissedCustomers(),
+                    storeState.getTotalCustomerWhoHasQueued(),
+                    storeState.getTotalQueueTime()
                     /* Add the remaining variables according to their actual types and intended column widths */
             );
 

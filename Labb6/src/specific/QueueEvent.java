@@ -35,6 +35,7 @@ public class QueueEvent extends Event {
             float next = scheduleNextEventTime();
             return new PayEvent(next, (MakeCustomer) this.getEventTarget(), (StoreState) this.getState());
         } else {
+            specificState.increaseTotalCustomerWhoHasQueued();
             specificState.getCheckOutQueue().addCustomerToQueue(customer);
             return null;
         }

@@ -8,7 +8,12 @@ public class StoreState extends State {
     // StoreState is the state the simulation is in
     // But it is also here setting for how the simulation will be run is.
     //
-    //Stuff for event-----------------------------
+
+    private float previousTime = 0;
+
+    //-Stuff printing-----------------------------
+
+    private float totalQueueTime = 0;
     private String eventName;
     private int customerId;
 
@@ -16,6 +21,9 @@ public class StoreState extends State {
 
     private int paidCustomers;
 
+    private int totalCustomerWhoHasQueued = 0;
+
+    //----------------------------------------------
     private CheckOutQueue checkOutQueue = new CheckOutQueue();
 
     private UniformRandomStream pickTime;
@@ -171,4 +179,43 @@ public class StoreState extends State {
     public double getPayTime() {
         return payTime.next();
     }
+
+    public int getTotalCustomerWhoHasQueued() {
+        return totalCustomerWhoHasQueued;
+    }
+
+    public void increaseTotalCustomerWhoHasQueued() {
+        this.totalCustomerWhoHasQueued++;
+    }
+
+    public float getPreviousTime() {
+        return previousTime;
+    }
+
+    public void setPreviousTime(float previousTime) {
+        this.previousTime = previousTime;
+    }
+
+    public float getTotalQueueTime() {
+        return totalQueueTime;
+    }
+
+    public void setTotalQueueTime(float totalQueueTime) {
+        this.totalQueueTime = this.getTotalQueueTime() - this.getPreviousTime();
+    }
+
+
+    //Methods with logic follows here
+
+    public void updateTime(float currentTime) {
+
+        this.setPreviousTime(this.getTimePassed());
+        this.setTimePassed(currentTime);
+
+        setTotalQueueTime(this.getTimePassed() - this.getPreviousTime());
+        
+
+    }
+
+
 }
