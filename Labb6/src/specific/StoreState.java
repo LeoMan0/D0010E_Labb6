@@ -13,6 +13,7 @@ public class StoreState extends State {
     //
 
 
+    private float previousTime = 0;
     private float queueTimeBegin = 0;
 
     //-Stuff printing-----------------------------
@@ -26,6 +27,8 @@ public class StoreState extends State {
     private int paidCustomers;
 
     private int totalCustomerWhoHasQueued = 0;
+
+    private float checkoutIdleTime = 0;
 
 
     //----------------------------------------------
@@ -199,7 +202,7 @@ public class StoreState extends State {
     }
 
     public void setTotalQueueTime() {
-        this.totalQueueTime += (this.getTimePassed() - this.queueTimeBegin) * checkOutQueue.size();
+        this.totalQueueTime += (this.getTimePassed() - this.previousTime) * queueLength();
     }
 
 
@@ -218,29 +221,28 @@ public class StoreState extends State {
         this.queueTimeBegin = queueTimeBegin;
     }
 
+    public void setPreviousTime(float previousTime) {
+        this.previousTime = previousTime;
+    }
+
+    public void setCheckoutIdleTime() {
+        this.checkoutIdleTime += (this.getTimePassed() - this.previousTime) * checkoutsOpen;
+    }
+
+    public float getCheckoutIdleTime() {
+        return checkoutIdleTime;
+    }
+
     public void updateTime(float currentTime) {
 
 
-        if (Objects.equals(this.eventName, "QueueEvent")) {
-            this.setQueueTimeBegin(this.getTimePassed());
-            //System.out.println("s");
-            if (this.checkOutQueue.isEmpty()) {
-                this.setQueueTimeBegin(currentTime);
-                // System.out.println("b");
-            }
-        }
+        this.setPreviousTime(this.getTimePassed());
         this.setTimePassed(currentTime);
-        if (Objects.equals(this.eventName, "QueueEvent")) {
-            return;
-        }
-//        if (Objects.equals(this.eventName, "EntreEvent")) {
-//            return;
-//        }
-//        if (Objects.equals(this.eventName, "LeaveEvent")) {
-//            return;
-//        }
-        //System.out.println((this.getTimePassed() - this.queueTimeBegin) * checkOutQueue.size());
+
+        
+        setCheckoutIdleTime();
         setTotalQueueTime();
     }
+
 
 }
