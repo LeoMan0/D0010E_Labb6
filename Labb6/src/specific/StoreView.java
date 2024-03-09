@@ -24,9 +24,9 @@ public class StoreView extends View {
 //        if (storeState.getEventName() != "EnterEvent" && storeState.getEventName() != "QueueEvent") {
 //            System.out.printf("%.2f %s %s %s\n", storeState.getTimePassed(), storeState.getEventName(), storeState.getCustomerId(), storeState.getCheckoutsOpen(), storeState.getMissedCustomers(), storeState.getCurrentCapacityInStore(), "x", storeState.getMissedCustomers());
 //        }
-        if (storeState.getEventName() != "Entre" && storeState.getEventName() != "QueueEvent" && storeState.getEventName() != "Lämnar") {
+        if (storeState.getEventName() != "EntreEvent" && storeState.getEventName() != "QueueEvent" && storeState.getEventName() != "LeaveEvent") {
 
-            System.out.printf("%-6.2f %-10s %-5d %-4s %-5d %-7.2f %-4s %-4d %-4d %-4d %.2f \n",
+            System.out.printf("%-6.2f %-10s %-5d %-4s %-5d %-7.2f %-4s %-4d %-4d %-4d %-6.2f %d %s \n",
                     storeState.getTimePassed(),
                     storeState.getEventName(),
                     storeState.getCustomerId(),
@@ -37,7 +37,9 @@ public class StoreView extends View {
                     storeState.getPaidCustomers(),
                     storeState.getMissedCustomers(),
                     storeState.getTotalCustomerWhoHasQueued(),
-                    storeState.getTotalQueueTime()
+                    storeState.getTotalQueueTime(),
+                    storeState.queueLength(),
+                    storeState.getLookInsideCustomerQueue()
                     /* Add the remaining variables according to their actual types and intended column widths */
             );
 
@@ -60,6 +62,6 @@ public class StoreView extends View {
         System.out.println("\nFÖRLOPP");
         System.out.println("=======");
         System.out.println("Tid    Händelse  Kund   ?   led    ledT    I    $   :-( köat köT köar [Kassakö..]");
-        System.out.println("12345678901234567890123456789012345678901234567890123456789012345678901234567890");
+
     }
 }

@@ -14,9 +14,10 @@ public class PickEvent extends Event {
     // In this excute we have to make it so that customer is added to the queue
     @Override
     public Event execute() {
-        this.state.setTimePassed(this.getTime());
+        
 
         StoreState specificState = (StoreState) this.state;
+        specificState.updateTime(this.getTime());
         MakeCustomer customer = (MakeCustomer) this.eventTarget;
 
         specificState.setCustomerId(customer.getCustomerId());

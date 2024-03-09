@@ -4,12 +4,16 @@ import general.State;
 
 import random.*;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class StoreState extends State {
     // StoreState is the state the simulation is in
     // But it is also here setting for how the simulation will be run is.
     //
 
-    private float previousTime = 0;
+
+    private float queueTimeBegin = 0;
 
     //-Stuff printing-----------------------------
 
@@ -22,6 +26,7 @@ public class StoreState extends State {
     private int paidCustomers;
 
     private int totalCustomerWhoHasQueued = 0;
+
 
     //----------------------------------------------
     private CheckOutQueue checkOutQueue = new CheckOutQueue();
@@ -188,34 +193,54 @@ public class StoreState extends State {
         this.totalCustomerWhoHasQueued++;
     }
 
-    public float getPreviousTime() {
-        return previousTime;
-    }
-
-    public void setPreviousTime(float previousTime) {
-        this.previousTime = previousTime;
-    }
 
     public float getTotalQueueTime() {
         return totalQueueTime;
     }
 
-    public void setTotalQueueTime(float totalQueueTime) {
-        this.totalQueueTime = this.getTotalQueueTime() - this.getPreviousTime();
+    public void setTotalQueueTime() {
+        this.totalQueueTime += (this.getTimePassed() - this.queueTimeBegin) * checkOutQueue.size();
     }
 
 
     //Methods with logic follows here
 
-    public void updateTime(float currentTime) {
 
-        this.setPreviousTime(this.getTimePassed());
-        this.setTimePassed(currentTime);
-
-        setTotalQueueTime(this.getTimePassed() - this.getPreviousTime());
-        
-
+    public int queueLength() {
+        return this.getCheckOutQueue().size();
     }
 
+    public String getLookInsideCustomerQueue() {
+        return Arrays.toString(checkOutQueue.toArray());
+    }
+
+    public void setQueueTimeBegin(float queueTimeBegin) {
+        this.queueTimeBegin = queueTimeBegin;
+    }
+
+    public void updateTime(float currentTime) {
+
+
+        if (Objects.equals(this.eventName, "QueueEvent")) {
+            this.setQueueTimeBegin(this.getTimePassed());
+            //System.out.println("s");
+            if (this.checkOutQueue.isEmpty()) {
+                this.setQueueTimeBegin(currentTime);
+                // System.out.println("b");
+            }
+        }
+        this.setTimePassed(currentTime);
+        if (Objects.equals(this.eventName, "QueueEvent")) {
+            return;
+        }
+//        if (Objects.equals(this.eventName, "EntreEvent")) {
+//            return;
+//        }
+//        if (Objects.equals(this.eventName, "LeaveEvent")) {
+//            return;
+//        }
+        //System.out.println((this.getTimePassed() - this.queueTimeBegin) * checkOutQueue.size());
+        setTotalQueueTime();
+    }
 
 }

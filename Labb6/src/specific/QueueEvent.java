@@ -19,6 +19,7 @@ public class QueueEvent extends Event {
         this.state.setTimePassed(this.getTime());
 
         specificState = (StoreState) this.state;
+        specificState.updateTime(this.getTime());
         MakeCustomer customer = (MakeCustomer) this.eventTarget;
 
         specificState.setCustomerId(customer.getCustomerId());

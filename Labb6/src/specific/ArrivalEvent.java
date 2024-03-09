@@ -11,9 +11,11 @@ public class ArrivalEvent extends Event {
 
     @Override
     public Event execute() {
-        this.state.setTimePassed(this.getTime());
+        //this.state.setTimePassed(this.getTime());
 
         StoreState specificState = (StoreState) this.state;
+        specificState.updateTime(this.getTime());
+
         MakeCustomer customer = (MakeCustomer) this.eventTarget;
 
         specificState.setCustomerId(customer.getCustomerId());

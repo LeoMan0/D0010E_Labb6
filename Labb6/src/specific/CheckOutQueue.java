@@ -27,5 +27,22 @@ public class CheckOutQueue {
         return checkOutQueue.isEmpty();
     }
 
+    public int size() {
+        return checkOutQueue.size();
+    }
+
+    public int[] toArray() {
+
+        int[] intArray = new int[checkOutQueue.size()];
+
+        for (int i = 0; i < checkOutQueue.size(); i++) {
+            MakeCustomer customer = checkOutQueue.get(i);
+
+            intArray[i] = customer.getCustomerId();
+        }
+
+        return intArray;
+    }
+
 
 }

@@ -6,16 +6,16 @@ public class LeaveEvent extends Event {
 
     public LeaveEvent(float time, MakeCustomer customer, StoreState state) {
         super(time, customer, state);
-        this.nameOfCurrentEvent = "Lämnar";
+        this.nameOfCurrentEvent = "LeaveEvent";
 
     }
 
 
     @Override
     public Event execute() {
-        this.state.setTimePassed(this.getTime());
 
         StoreState specificState = (StoreState) this.state;
+        specificState.updateTime(this.getTime());
         MakeCustomer customer = (MakeCustomer) this.eventTarget;
 
         specificState.setCustomerId(customer.getCustomerId());

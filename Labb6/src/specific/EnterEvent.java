@@ -7,16 +7,17 @@ public class EnterEvent extends Event {
 
     public EnterEvent(float time, MakeCustomer customer, StoreState storeState) {
         super(time, customer, storeState);
-        this.nameOfCurrentEvent = "Entre";
+        this.nameOfCurrentEvent = "EnterEvent";
     }
 
 
     @Override
     public Event execute() {
         //Setting the time to when the event was executed
-        this.state.setTimePassed(this.getTime());
+        //this.state.setTimePassed(this.getTime());
 
         specificState = (StoreState) this.state;
+        specificState.updateTime(this.getTime());
         MakeCustomer customer = (MakeCustomer) this.eventTarget;
 
         specificState.setCustomerId(customer.getCustomerId());
