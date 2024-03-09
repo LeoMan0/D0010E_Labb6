@@ -12,12 +12,17 @@ import java.util.Observable;
 @SuppressWarnings("deprecation")
 public abstract class State extends Observable {
 
-    private boolean stop = false;
+    private boolean run = true;
     private float timePassed = 0;
 
     // Check if simulator is stopped
-    public boolean getStop() {
-        return stop;
+
+    public void stop() {
+        run = false;
+    }
+
+    public boolean getRun() {
+        return run;
     }
 
 

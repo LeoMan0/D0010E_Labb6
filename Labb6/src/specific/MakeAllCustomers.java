@@ -18,9 +18,13 @@ public class MakeAllCustomers {
 
         int customerId = -1;
 
-        while (arrivalTimes < storeState.getCloseStoreTime()) {
+        while (arrivalTimes <= storeState.getCloseStoreTime()) {
 
             arrivalTimes = arrivalTimes + generateArrivalTime.next();
+            if (arrivalTimes >= storeState.getCloseStoreTime()) {
+                break;
+            }
+
 
             customerId++;
 

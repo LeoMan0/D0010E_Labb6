@@ -37,10 +37,12 @@ public class EventQueue {
     // inserting it -> {2,3,4,5,5,5,newEvent,6,7}
 
     public void executeAndInsert() {
-        if (queueList.isEmpty()) return; // Guard against an empty list
-
+        if (queueList.isEmpty()) {
+            this.state.notifyView();
+            return; // Guard against an empty list
+        }
         // Remove the first event from the queue and execute it
-        
+
         Event executedEvent = this.queueList.remove(0).execute();
         this.state.notifyView();
 
