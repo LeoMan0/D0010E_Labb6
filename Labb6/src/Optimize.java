@@ -37,10 +37,10 @@ public class Optimize implements K {
     public static void main(String[] args) {
         Optimize optimize = new Optimize();
 
-        int test = optimize.optimalCheckOutsSetSeed(optimize.seed);
-        System.out.println(test);
-        int test2 = optimize.optimalCheckOutsRandomSeed();
-        System.out.println(test2);
+        int test2 = optimize.optimalCheckOutsSetSeed(optimize.seed);
+        System.out.println("Minsta antal kassor som ger minimalt antal missade : " + test2);
+        int test3 = optimize.optimalCheckOutsRandomSeed();
+        System.out.println("Minsta antal kassor som ger minimalt antal missade : " + test3);
     }
 
     public int runOnce(int checkoutsOpen, int setSeed) {
@@ -77,23 +77,33 @@ public class Optimize implements K {
             }
         }
 
-        System.out.println("Minsta antal kassor som ger minimalt antal missade (" + minMissedCustomers + "): " + optimalCheckouts);
         return optimalCheckouts;
     }
 
     /**
-     * Finds the optimal number of checkouts to minimize missed customers using a randomly
-     * generated seed, allowing for a broader evaluation of checkout configurations.
+     * Finds the most stable optimal number of checkout counters needed to minimize the number of missed customers
+     * across multiple simulations, each using a different, randomly generated seed.
      *
      * @return The optimal number of checkouts for minimizing missed customers with a random seed.
      */
 
-
     public int optimalCheckOutsRandomSeed() {
-        Random random = new Random();
-        int randomSeed = random.nextInt(); //Creating a random seed
+        Random random = new Random(); // Use a specific seed for reproducibility.
+        int optimalRandomSeed = Integer.MAX_VALUE;
+        int i = 0;
 
-        return this.optimalCheckOutsSetSeed(randomSeed);
+        while (i < 100) {
+            int currentOptimal = optimalCheckOutsSetSeed(random.nextInt());
+            if (currentOptimal < optimalRandomSeed) {
+                optimalRandomSeed = currentOptimal;
+                i = 0;
+            } else {
+                i++;
+            }
+            System.out.println(i + " " + optimalRandomSeed);
+
+        }
+        return optimalRandomSeed;
     }
 
 
