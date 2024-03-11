@@ -1,30 +1,33 @@
 package general;
 
-import specific.ArrivalEvent;
+
+/**
+ * Serves as the base class for all events within the simulation, encapsulating the common
+ * functionalities and properties that every event must have. Events are created with a specific
+ * execution time and, when executed, can result in the creation of a subsequent event, effectively
+ * driving the simulation forward.
+ * <p>
+ * The execution time of an event represents the moment it is completed rather than when it started.
+ * For example, for a payment event, the time signifies the completion of the payment process.
+ *
+ * @author Leo Man, Jacky Phuong, Leo Vedberg, Viktor Sundén
+ */
 
 public abstract class Event {
 
 
-    //The event class works like this. A initial event is created as an object. When that event is excuted,
-    //The object is then changed to the event that comes after the first one and so on.
-    //So currentEvent = ArrivalEvent
-    //  currentEvent = currentEvent.execute() -> currentEvent = nextEvent
-
-
-    // The time of each Event is when the event is to be executed, not when the event started.
-    // Meaning if we have an event called EventPay, it is not the time of when he started to pay.
-    // It is the time when he is done paying.
-    // Therefore, the time for the next event has to be calculated as the current event is executed.
-
-
     protected float time;
-
     protected String nameOfCurrentEvent;
-
     protected Object eventTarget;
-
     protected State state;
 
+    /**
+     * Constructs a new Event with a specified execution time, target, and state.
+     *
+     * @param time        The time at which the event is to be executed.
+     * @param eventTarget The target object of the event, in this project only customer.
+     * @param state       The current state of the simulation that the event can modify.
+     */
 
     public Event(float time, Object eventTarget, State state) {
         this.time = time;
@@ -32,6 +35,13 @@ public abstract class Event {
         this.state = state;
     }
 
+    /**
+     * Executes the event, affecting the simulation state as necessary and possibly generating
+     * a subsequent event to be added to the event queue.
+     *
+     * @return The next event to occur following the execution of this event, or null if no
+     * subsequent event is generated.
+     */
     public abstract Event execute();
 
 
@@ -47,7 +57,12 @@ public abstract class Event {
         return state;
     }
 
-    //This method is just used to run tests
+    /**
+     * Provides a string representation of the event for debugging and testing purposes,
+     * including its execution time and the type or name of the event.
+     *
+     * @return A string description of the event.
+     */
     @Override
     public String toString() {
         return "Event{" +

@@ -1,8 +1,8 @@
-/*
- * @ Leo Man
- * @ Leo Vedberg
- * @ Jacky Phuong
- * @ Viktor Sundén
+/**
+ * Serves as an abstract base class for creating views that observe and react to changes
+ * in the simulation state.
+ *
+ * @author Leo Man, Jacky Phuong, Leo Vedberg, Viktor Sundén
  */
 
 package general;
