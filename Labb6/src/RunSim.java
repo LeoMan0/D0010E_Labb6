@@ -15,6 +15,7 @@ public class RunSim {
                 2, 3, 0.5f, 1, false);
         System.out.println(sim.runSimAndGetMissedCustomers());
 
+
         RunSim sim1 = new RunSim(1, 1234, 10f, 2, 5,
                 2, 3, 0.5f, 1, true);
         sim1.run();
@@ -27,7 +28,7 @@ public class RunSim {
 
         this.simulator = new Simulator(lambda, seed, closeStoreTime, checkoutsOpen, maxCapacityInStore, minPayTime, maxPayTime, minPickTime, maxPickTime, print);
     }
-    
+
 
     public void run() {
         this.simulator.start();
