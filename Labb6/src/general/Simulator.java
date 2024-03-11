@@ -42,5 +42,9 @@ public class Simulator {
         eventQueue.executeAndInsert();
     }
 
+    public int getMissedCustomers() {
+        return storeState.getMissedCustomers();
+    }
+
 
 }
