@@ -16,9 +16,9 @@ public class RunSim {
         System.out.println(sim.runSimAndGetMissedCustomers());
 
 
-        RunSim sim1 = new RunSim(1, 1234, 10f, 2, 5,
-                2, 3, 0.5f, 1, true);
-        sim1.run();
+//        RunSim sim1 = new RunSim(1, 1234, 10f, 2, 5,
+//                2, 3, 0.5f, 1, true);
+//        sim1.run();
 
 
     }
