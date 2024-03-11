@@ -60,7 +60,7 @@ public class StoreState extends State {
     private float closeStoreTime;
 
 
-    public StoreState(double lambda, int seed, float closeStoreTime, int checkoutsOpen, int maxCapacityInStore, double minPayTime, double maxPayTime, double minPickTime, double maxPickTime) {
+    public StoreState(double lambda, int seed, float closeStoreTime, int checkoutsOpen, int maxCapacityInStore, double minPayTime, double maxPayTime, double minPickTime, double maxPickTime, boolean print) {
         this.lambda = lambda;
         this.seed = seed;
         this.closeStoreTime = closeStoreTime;
@@ -70,6 +70,7 @@ public class StoreState extends State {
         this.maxPayTime = maxPayTime;
         this.minPickTime = minPickTime;
         this.maxPickTime = maxPickTime;
+        this.setPrint(print);
 
         pickTime = new UniformRandomStream(minPickTime, maxPickTime, seed);
         payTime = new UniformRandomStream(minPayTime, maxPayTime, seed);
@@ -248,6 +249,5 @@ public class StoreState extends State {
         setCheckoutIdleTime();
         setTotalQueueTime();
     }
-
 
 }

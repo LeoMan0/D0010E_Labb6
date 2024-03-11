@@ -2,6 +2,7 @@ package specific;
 
 import general.*;
 
+
 public class ArrivalEvent extends Event {
 
     public ArrivalEvent(float time, MakeCustomer customer, StoreState storeState) {

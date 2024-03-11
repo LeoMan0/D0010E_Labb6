@@ -6,10 +6,6 @@ import java.util.ArrayList;
 
 public class EventQueue {
 
-    //Just here to test stuff
-    public static void main(String[] args) {
-
-    }
 
     // Utility method to print the event queue for tests
     public void printQueue(EventQueue eventQueue) {
@@ -38,13 +34,19 @@ public class EventQueue {
 
     public void executeAndInsert() {
         if (queueList.isEmpty()) {
+
+
             this.state.notifyView();
+
             return; // Guard against an empty list
         }
         // Remove the first event from the queue and execute it
 
         Event executedEvent = this.queueList.remove(0).execute();
+
+
         this.state.notifyView();
+
 
         // Use addInsert to add the executed event into the queue at the correct position based on its time
         addInsert(executedEvent);

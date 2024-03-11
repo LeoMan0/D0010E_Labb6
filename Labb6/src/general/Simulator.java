@@ -11,11 +11,10 @@ public class Simulator {
     private StoreView storeView;
     private EventQueue eventQueue;
 
-    public Simulator(StoreState storeState) {
+    public Simulator(double lambda, int seed, float closeStoreTime, int checkoutsOpen, int maxCapacityInStore, double minPayTime, double maxPayTime, double minPickTime, double maxPickTime, boolean print) {
 
-        this.storeState = storeState;
-        this.storeView = new StoreView(this.storeState);
-        storeState.addObserver(storeView);
+        this.storeState = new StoreState(lambda, seed, closeStoreTime, checkoutsOpen, maxCapacityInStore, minPayTime, maxPayTime, minPickTime, maxPickTime, print);
+
 
         MakeAllCustomers allCustomersGenerator = new MakeAllCustomers(storeState);
         ArrayList<MakeCustomer> allCustomers = allCustomersGenerator.getAllCustomers();
@@ -26,6 +25,11 @@ public class Simulator {
         for (MakeCustomer customer : allCustomers) {
             ArrivalEvent arrivalEvent = new ArrivalEvent(customer.getArrivalTime(), customer, storeState);
             eventQueue.addInsert(arrivalEvent);
+        }
+
+        if (print) {
+            this.storeView = new StoreView(this.storeState);
+            storeState.addObserver(storeView);
         }
 
     }

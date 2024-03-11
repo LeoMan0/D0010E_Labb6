@@ -15,6 +15,8 @@ public abstract class State extends Observable {
     private boolean run = true;
     private float timePassed = 0;
 
+    private boolean print;
+
     // Check if simulator is stopped
 
     public void stop() {
@@ -45,5 +47,14 @@ public abstract class State extends Observable {
     public void notifyView() {
         setChanged();
         notifyObservers();
+    }
+
+
+    public void setPrint(boolean print) {
+        this.print = print;
+    }
+
+    public boolean getPrint() {
+        return this.print;
     }
 }
