@@ -1,5 +1,11 @@
 import java.util.Random;
 
+
+/**
+ * Optimizes the checkout process in a store simulation to minimize the number of missed customers.
+ *
+ * @author Leo Man, Jacky Phuong, Leo Vedberg, Viktor Sundén
+ */
 public class Optimize implements K {
 
 
@@ -13,6 +19,29 @@ public class Optimize implements K {
     private double maxPayTime = HIGH_PAYMENT_TIME;
     private float closeStoreTime = (float) END_TIME;
 
+    /**
+     * Runs a single simulation instance with a specified number of checkouts and seed,
+     * returning the number of missed customers.
+     *
+     * @param checkoutsOpen The number of checkouts to be open for this simulation run.
+     * @param setSeed       The seed used for random number generation in the simulation.
+     * @return The number of customers missed during the simulation.
+     */
+
+
+    /**
+     * Main method to test the optimization process with both set and random seeds.
+     *
+     * @param args Command line arguments (not used).
+     */
+    public static void main(String[] args) {
+        Optimize optimize = new Optimize();
+
+        int test = optimize.optimalCheckOutsSetSeed(optimize.seed);
+        System.out.println(test);
+        int test2 = optimize.optimalCheckOutsRandomSeed();
+        System.out.println(test2);
+    }
 
     public int runOnce(int checkoutsOpen, int setSeed) {
 
@@ -21,6 +50,14 @@ public class Optimize implements K {
         return instanceOfRunSim.runSimAndGetMissedCustomers();
     }
 
+    /**
+     * Finds the optimal number of checkouts to minimize missed customers using a specific seed.
+     * This method iteratively increases the number of checkouts to determine the setup that
+     * results in the fewest missed customers.
+     *
+     * @param setSeed The seed used for the simulation to ensure reproducibility.
+     * @return The optimal number of checkouts for minimizing missed customers.
+     */
 
     public int optimalCheckOutsSetSeed(int setSeed) {
         int minMissedCustomers = Integer.MAX_VALUE;
@@ -44,23 +81,19 @@ public class Optimize implements K {
         return optimalCheckouts;
     }
 
+    /**
+     * Finds the optimal number of checkouts to minimize missed customers using a randomly
+     * generated seed, allowing for a broader evaluation of checkout configurations.
+     *
+     * @return The optimal number of checkouts for minimizing missed customers with a random seed.
+     */
+
 
     public int optimalCheckOutsRandomSeed() {
         Random random = new Random();
         int randomSeed = random.nextInt(); //Creating a random seed
 
         return this.optimalCheckOutsSetSeed(randomSeed);
-    }
-
-
-    public static void main(String[] args) {
-        Optimize optimize = new Optimize();
-
-        int test = optimize.optimalCheckOutsSetSeed(optimize.seed);
-        System.out.println(test);
-        int test2 = optimize.optimalCheckOutsRandomSeed();
-        System.out.println(test2);
-
     }
 
 
