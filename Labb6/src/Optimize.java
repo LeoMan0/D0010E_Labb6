@@ -1,6 +1,9 @@
-
+import java.util.Random;
 
 public class Optimize implements K {
+
+
+    // Values from k interface. Change K file to change which method to run.
     private int seed = SEED;
     private int maxCapacityInStore = M;
     private double lambda = L;
@@ -11,10 +14,6 @@ public class Optimize implements K {
     private float closeStoreTime = (float) END_TIME;
 
 
-//    RunSim sim = new RunSim(1, 1234, 10f, 2, 5,
-//            2, 3, 0.5f, 1, false);
-
-
     public int runOnce(int checkoutsOpen, int setSeed) {
 
         RunSim instanceOfRunSim = new RunSim(lambda, setSeed, closeStoreTime, checkoutsOpen, maxCapacityInStore, minPayTime, maxPayTime, minPickTime, maxPickTime, false);
@@ -22,7 +21,7 @@ public class Optimize implements K {
         return instanceOfRunSim.runSimAndGetMissedCustomers();
     }
 
-    
+
     public int optimalCheckOutsSetSeed(int setSeed) {
         int minMissedCustomers = Integer.MAX_VALUE;
         int optimalCheckouts = 1; // Start with 1 checkout as a baseline
@@ -40,7 +39,17 @@ public class Optimize implements K {
                 improvement = false; // No improvement, so exit the loop
             }
         }
+
+        System.out.println("Minsta antal kassor som ger minimalt antal missade (" + minMissedCustomers + "): " + optimalCheckouts);
         return optimalCheckouts;
+    }
+
+
+    public int optimalCheckOutsRandomSeed() {
+        Random random = new Random();
+        int randomSeed = random.nextInt(); //Creating a random seed
+
+        return this.optimalCheckOutsSetSeed(randomSeed);
     }
 
 
@@ -49,6 +58,8 @@ public class Optimize implements K {
 
         int test = optimize.optimalCheckOutsSetSeed(optimize.seed);
         System.out.println(test);
+        int test2 = optimize.optimalCheckOutsRandomSeed();
+        System.out.println(test2);
 
     }
 
