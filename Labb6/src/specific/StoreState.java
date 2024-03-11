@@ -70,7 +70,7 @@ public class StoreState extends State {
         this.maxPayTime = maxPayTime;
         this.minPickTime = minPickTime;
         this.maxPickTime = maxPickTime;
-        this.setPrint(print);
+
 
         pickTime = new UniformRandomStream(minPickTime, maxPickTime, seed);
         payTime = new UniformRandomStream(minPayTime, maxPayTime, seed);
