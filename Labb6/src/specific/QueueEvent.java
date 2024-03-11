@@ -2,18 +2,43 @@ package specific;
 
 import general.Event;
 
+/**
+ * Represents an event where a customer either joins a queue for checkout or
+ * proceeds directly to payment if a checkout is immediately available.
+ * <p>
+ * Note: This event is not displayed in the StoreView update as per assignment
+ * requirements.
+ *
+ * @author Leo Man, Jacky Phuong, Leo Vedberg, Viktor Sundén
+ */
 public class QueueEvent extends Event {
 
-    // This class is basically redundant or rather PayEvent is but here we are.
 
     private StoreState specificState;
+
+    /**
+     * Constructs a QueueEvent with specified time, customer, and store state.
+     * Initializes the event with the given parameters and sets the event name to "QueueEvent".
+     *
+     * @param time       The execution time of this event.
+     * @param customer   The customer associated with this event.
+     * @param storeState The current state of the store when this event occurs.
+     */
 
     public QueueEvent(float time, MakeCustomer customer, StoreState storeState) {
         super(time, customer, storeState);
         this.nameOfCurrentEvent = "QueueEvent";
     }
 
-    // Likewise we have to make it so that the customer leaves the queue here
+    /**
+     * Executes the event by updating the store state to reflect the customer's
+     * queuing status. Depending on the availability of checkouts, the
+     * customer either proceeds to payment or joins the queue.
+     *
+     * @return A new PayEvent if a checkout is immediately available, otherwise null
+     * indicating the customer has joined the queue and will wait for the
+     * next available checkout.
+     */
     @Override
     public Event execute() {
         this.state.setTimePassed(this.getTime());
@@ -41,6 +66,15 @@ public class QueueEvent extends Event {
             return null;
         }
     }
+
+    /**
+     * Calculates the next event time based on the current event time and the
+     * randomly generated pay time for the customer. This calculation is used when
+     * transitioning a customer directly to payment, bypassing the queue due to
+     * an immediately available checkout.
+     *
+     * @return The time for the next PayEvent.
+     */
 
     public float scheduleNextEventTime() {
         return time + (float) specificState.getPayTime();
