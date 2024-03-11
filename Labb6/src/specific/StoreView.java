@@ -5,10 +5,24 @@ import general.View;
 
 import java.util.Observable;
 
+/**
+ * Acts as the observer view for the store simulation, responsible
+ * for displaying progress, parameters, and results. For the simulation
+ *
+ * @author Leo Man, Jacky Phuong, Leo Vedberg, Viktor Sundén
+ */
+
 public class StoreView extends View {
 
     private StoreState storeState;
 
+    /**
+     * Constructs a StoreView with a specific store state. It registers itself as
+     * an observer to the store state, prints simulation parameters, and sets up
+     * the initial headers for event logging.
+     *
+     * @param storeState The state of the store being observed and displayed.
+     */
     public StoreView(StoreState storeState) {
         this.storeState = storeState;
         storeState.addObserver(this);
@@ -16,6 +30,14 @@ public class StoreView extends View {
         this.printEventHeaders();
     }
 
+    /**
+     * Called whenever the observed object is changed. It prints the details of
+     * each event unless it's specified to be hidden (like EnterEvent, QueueEvent,
+     * and LeaveEvent) and prints simulation results when the simulation ends.
+     *
+     * @param o   The observable object.
+     * @param arg An argument passed to the {@code notifyObservers} method.
+     */
     @Override
     public void update(Observable o, Object arg) {
 
@@ -42,6 +64,11 @@ public class StoreView extends View {
         }
     }
 
+    /**
+     * Prints the initial simulation parameters at the start of the simulation.
+     * Includes details such as the number of checkouts, maximum capacity, arrival rate,
+     * pick times, pay times, and the seed for randomness.
+     */
     public void printSimulationParameters() {
         System.out.println("PARAMETRAR");
         System.out.println("==========");
@@ -67,10 +94,14 @@ public class StoreView extends View {
         return "S";
     }
 
+    /**
+     * Prints the final results of the simulation, including statistics like
+     * the number of served and missed customers, total and average idle time
+     * of checkouts, and customer queue times.
+     */
     public void printSimulationResults() {
 
 
-        ;
         int servedCustomers = storeState.getPaidCustomers(); // Example, replace with a method call like storeState.getServedCustomers();
         int missedCustomers = storeState.getMissedCustomers(); // Example, replace with a method call like storeState.getMissedCustomers();
         int totalCustomers = servedCustomers + missedCustomers;
@@ -89,10 +120,7 @@ public class StoreView extends View {
         System.out.printf("Genomsnittlig ledig kassatid: %.2f te (dvs %.2f%% av tiden från öppning tills sista kunden betalat).\n", averageIdleTime, idleTimePercentage);
         System.out.printf("3) Total tid %d kunder tvingats köa: %.2f te.\n", customersWhoQueued, totalQueueTime);
         System.out.printf("Genomsnittlig kötid: %.2f te.\n", averageQueueTime);
-
-        //
-        //
-        // 3 Passed
+        
 
     }
 }

@@ -5,61 +5,67 @@ import general.State;
 import random.*;
 
 import java.util.Arrays;
-import java.util.Objects;
+
+
+/**
+ * Represents the state of the store during the simulation, including time management,
+ * customer queue management, and keeping track of various statistics such as missed customers,
+ * paid customers, and total queue time. This class is responsible for initializing the simulation
+ * settings based on input parameters and updating the state as events occur.
+ *
+ * @author Leo Man, Jacky Phuong, Leo Vedberg, Viktor Sundén
+ */
 
 public class StoreState extends State {
     // StoreState is the state the simulation is in
     // But it is also here setting for how the simulation will be run is.
     //
-
-
     private float previousTime = 0;
 
-    //-Stuff printing-----------------------------
-
+    // Statistics and state variables
     private float totalQueueTime = 0;
     private String eventName;
     private int customerId;
-
-    private int missedCustomers;
-
-    private int paidCustomers;
-
+    private int missedCustomers = 0;
+    private int paidCustomers = 0;
     private int totalCustomerWhoHasQueued = 0;
-
     private float checkoutIdleTime = 0;
-
     private boolean storeIsOpen = true;
 
-
-    //----------------------------------------------
+    // Queue management
     private CheckOutQueue checkOutQueue = new CheckOutQueue();
 
+    // Random time generation for customer actions
     private UniformRandomStream pickTime;
-
     private UniformRandomStream payTime;
 
-    //Stuff for event-----------------------------
+    // Simulation parameters
     private int seed;
     private int checkoutsOpen;
     private int maxCapacityInStore;
-
     private int currentCapacityInStore = 0;
-
-
-    // The checkouts pay time are assumed to be uniformly distributed within an interval [min max]
-    //  And likewise for the time it takes for customers to pay
 
     private double lambda;
     private double minPayTime;
     private double maxPayTime;
-
     private double minPickTime;
     private double maxPickTime;
-
     private float closeStoreTime;
 
-
+    /**
+     * Constructs a StoreState with specified simulation parameters.
+     * Initializes random streams for pick and pay times using provided min/max values and seed.
+     *
+     * @param lambda             The average arrival rate of customers.
+     * @param seed               The seed for random number generation to ensure reproducibility.
+     * @param closeStoreTime     The time at which the store closes and no more customers are allowed to enter.
+     * @param checkoutsOpen      The number of checkouts open for processing payments.
+     * @param maxCapacityInStore The maximum number of customers allowed in the store at one time.
+     * @param minPayTime         The minimum time it takes for a customer to pay.
+     * @param maxPayTime         The maximum time it takes for a customer to pay.
+     * @param minPickTime        The minimum time it takes for a customer to pick their items.
+     * @param maxPickTime        The maximum time it takes for a customer to pick their items.
+     */
     public StoreState(double lambda, int seed, float closeStoreTime, int checkoutsOpen, int maxCapacityInStore, double minPayTime, double maxPayTime, double minPickTime, double maxPickTime, boolean print) {
         this.lambda = lambda;
         this.seed = seed;
@@ -76,6 +82,9 @@ public class StoreState extends State {
         payTime = new UniformRandomStream(minPayTime, maxPayTime, seed);
     }
 
+    // Getter and setter methods
+
+    // Additional methods to update and manage the store state
 
     public long getSeed() {
         return seed;
@@ -236,7 +245,12 @@ public class StoreState extends State {
         return this.storeIsOpen;
     }
 
-
+    /**
+     * Updates the store's time and calculates the checkout idle time and total queue time.
+     * Also updates the store's open/closed status based on the current time.
+     *
+     * @param currentTime The current simulation time to be updated to.
+     */
     public void updateTime(float currentTime) {
         if (currentTime >= this.closeStoreTime) {
             this.storeIsOpen = false;
