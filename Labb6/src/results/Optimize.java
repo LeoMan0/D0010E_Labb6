@@ -1,3 +1,5 @@
+package results;
+
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -22,15 +24,15 @@ import java.util.concurrent.TimeUnit;
 public class Optimize implements K {
 
 
-    // Values from k interface. Change K file to change which method to run.
-    private int seed = SEED;
-    private int maxCapacityInStore = M;
-    private double lambda = L;
-    private double minPickTime = LOW_COLLECTION_TIME;
-    private double maxPickTime = HIGH_COLLECTION_TIME;
-    private double minPayTime = LOW_PAYMENT_TIME;
-    private double maxPayTime = HIGH_PAYMENT_TIME;
-    private float closeStoreTime = (float) END_TIME;
+    // Values from k interface. Change results.K file to change which method to run.
+    private int seed = K.SEED;
+    private int maxCapacityInStore = K.M;
+    private double lambda = K.L;
+    private double minPickTime = K.LOW_COLLECTION_TIME;
+    private double maxPickTime = K.HIGH_COLLECTION_TIME;
+    private double minPayTime = K.LOW_PAYMENT_TIME;
+    private double maxPayTime = K.HIGH_PAYMENT_TIME;
+    private float closeStoreTime = (float) K.END_TIME;
 
     /**
      * Runs a single simulation instance with a specified number of checkouts and seed,
@@ -157,7 +159,7 @@ public class Optimize implements K {
      *
      * @return The most common optimal number of checkouts found across all simulations.
      */
-    // Running this at arrayLength 1000, for ex 7 in K, gave 460. Took 65 minutes
+    // Running this at arrayLength 1000, for ex 7 in results.K, gave 460. Took 65 minutes
     // on an i5-12400.
     private int optimalCheckoutsRandomSeedParallel() {
         ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());

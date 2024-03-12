@@ -1,5 +1,6 @@
+package results;
+
 import general.*;
-import specific.StoreState;
 
 /**
  * Entry point class for running the store simulation. This class initializes and starts
@@ -35,7 +36,7 @@ public class RunSim {
     }
 
     /**
-     * Constructs a RunSim instance which initializes a simulation with specific parameters.
+     * Constructs a results.RunSim instance which initializes a simulation with specific parameters.
      *
      * @param lambda             The average arrival rate of customers.
      * @param seed               The seed for random number generation.

@@ -1,3 +1,5 @@
+package results;
+
 public interface K {
     // Ex 1: (som sim1)
 //    public static final int M = 5;
