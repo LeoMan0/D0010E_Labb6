@@ -16,9 +16,30 @@ package general;
 public abstract class Event {
 
 
+    /**
+     * The execution time of the event. This represents the simulation time at which the event
+     * is to be executed, which is interpreted as the completion time of the event's action.
+     */
     protected float time;
+
+    /**
+     * The name of the current event. This field is used for identifying the event, which can be
+     * useful for debugging and logging purposes, helping to understand the flow of events in the
+     * simulation.
+     */
     protected String nameOfCurrentEvent;
+
+    /**
+     * The target object of the event. This is the object upon which the event acts. In this
+     * simulation project, it is a customer object, but the design allows for flexibility
+     * in the event's target.
+     */
     protected Object eventTarget;
+
+    /**
+     * The current state of the simulation. Events use this reference to modify the state of the
+     * simulation, reflecting changes that occur as a result of the event's execution.
+     */
     protected State state;
 
     /**
@@ -44,28 +65,28 @@ public abstract class Event {
      */
     public abstract Event execute();
 
-    
+
     /**
      * Method that returns the time for the Event
-     * 
+     *
      * @return Time for the Event
      */
     public float getTime() {
         return this.time;
     }
-    
+
     /**
      * Method that returns the Event target
-     * 
+     *
      * @return The Event target
      */
     public Object getEventTarget() {
         return this.eventTarget;
     }
-    
+
     /**
      * Method that returns the State of the simulation
-     * 
+     *
      * @return The State of the simulation
      */
     public State getState() {
