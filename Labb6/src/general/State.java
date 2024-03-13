@@ -25,11 +25,18 @@ public abstract class State extends Observable {
 
 
     // Check if simulator is stopped
-
+    
+    /**
+     * Method that changes the state of the simulation to not run.
+     */
     public void stop() {
         run = false;
     }
-
+    
+    /**
+     * Method that returns the state of whether the simulation should run or not.
+     * @return True if the simulation should continue running. Otherwise false.
+     */
     public boolean getRun() {
         return run;
     }

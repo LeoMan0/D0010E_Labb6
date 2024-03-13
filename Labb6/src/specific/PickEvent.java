@@ -50,7 +50,11 @@ public class PickEvent extends Event {
         return new QueueEvent(next, (MakeCustomer) this.getEventTarget(), (StoreState) this.getState());
     }
 
-
+    /**
+     * Method that returns the time for the next event.
+     * 
+     * @return The time for the next event.
+     */
     public float scheduleNextEventTime() {
         return time;
     }

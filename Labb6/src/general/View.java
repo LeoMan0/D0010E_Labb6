@@ -11,7 +11,17 @@ import java.util.Observer;
 import java.util.Observable;
 
 //  A class for general view
+/**
+ * Abstract class that implements an observer.
+ */
 @SuppressWarnings("deprecation")
 public abstract class View implements Observer {
+	
+	/**
+	 * Method that updates the view by using the observer.
+	 * 
+	 * @param o The observable object.
+	 * @param arg An argument passed to the {@code notifyObservers} method.
+	 */
     public abstract void update(Observable o, Object arg);
 }

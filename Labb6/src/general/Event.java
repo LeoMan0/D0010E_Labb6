@@ -44,15 +44,30 @@ public abstract class Event {
      */
     public abstract Event execute();
 
-
+    
+    /**
+     * Method that returns the time for the Event
+     * 
+     * @return Time for the Event
+     */
     public float getTime() {
         return this.time;
     }
-
+    
+    /**
+     * Method that returns the Event target
+     * 
+     * @return The Event target
+     */
     public Object getEventTarget() {
         return this.eventTarget;
     }
-
+    
+    /**
+     * Method that returns the State of the simulation
+     * 
+     * @return The State of the simulation
+     */
     public State getState() {
         return state;
     }

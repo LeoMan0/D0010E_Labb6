@@ -65,6 +65,7 @@ public class StoreState extends State {
      * @param maxPayTime         The maximum time it takes for a customer to pay.
      * @param minPickTime        The minimum time it takes for a customer to pick their items.
      * @param maxPickTime        The maximum time it takes for a customer to pick their items.
+     * @param print 			 The state of whether the state should be printed or not.
      */
     public StoreState(double lambda, int seed, float closeStoreTime, int checkoutsOpen, int maxCapacityInStore, double minPayTime, double maxPayTime, double minPickTime, double maxPickTime, boolean print) {
         this.lambda = lambda;
@@ -85,133 +86,252 @@ public class StoreState extends State {
     // Getter and setter methods
 
     // Additional methods to update and manage the store state
-
+    
+    /**
+     * Method that returns the simulations seed.
+     * 
+     * @return The simulations seed.
+     */
     public long getSeed() {
         return seed;
     }
-
+    
+    /**
+     * Method that returns the simulations lambda.
+     * 
+     * @return The simulations lambda.
+     */
     public double getLambda() {
         return lambda;
     }
 
+    /**
+     * Method that returns the amount of checkouts that are open.
+     * 
+     * @return The amount of checkouts that are open.
+     */
     public int getCheckoutsOpen() {
         return checkoutsOpen;
     }
-
+    
+    /**
+     * Method that increases the amount of of checkouts that are open by.
+     */
     public void increaseCheckOutsOpen() {
         ++this.checkoutsOpen;
     }
-
+    
+    /**
+     * Method that decreases the amount of checkouts that are open.
+     */
     public void decreaseCheckOutsOpen() {
         --this.checkoutsOpen;
     }
 
-
+    /**
+     * Method that returns the maximum capacity of customers for the store.
+     * 
+     * @return The maximum capacity of customers.
+     */
     public int getMaxCapacityInStore() {
         return maxCapacityInStore;
     }
 
-
+    /**
+     * Method that returns the minimum time it takes to pay.
+     * 
+     * @return The minimum time it takes to pay.
+     */
     public double getMinPayTime() {
         return minPayTime;
     }
 
-
+    /**
+     * Method that returns the maximum time it takes to pay.
+     * 
+     * @return The maximum time it takes to pay.
+     */
     public double getMaxPayTime() {
         return maxPayTime;
     }
 
-
+    /**
+     * Method that returns the minimum time it takes to pick groceries.
+     * 
+     * @return The minimum time it takes to pick groceries.
+     */
     public double getMinPickTime() {
         return minPickTime;
     }
 
-
+    /**
+     * Method that returns the maximum time it takes to pick groceries.
+     * 
+     * @return The maximum time it takes to pick groceries.
+     */
     public double getMaxPickTime() {
         return maxPickTime;
     }
 
-
+    /**
+     * Method that returns the closing time for the store.
+     * 
+     * @return The closing time for the store.
+     */
     public float getCloseStoreTime() {
         return closeStoreTime;
     }
 
-
+    /**
+     * Method that returns the current amount of customers in the store.
+     * 
+     * @return The closing time for the store.
+     */
     public int getCurrentCapacityInStore() {
         return this.currentCapacityInStore;
     }
-
+    
+    /**
+     * Method that decreases the current amount of customers in the store.
+     */
     public void decreaseCurrentCapacity() {
         this.currentCapacityInStore--;
     }
-
+    
+    /**
+     * Method that increases the current amount of customers in the store.
+     */
     public void increaseCurrentCapacity() {
         this.currentCapacityInStore++;
     }
-
+    
+    /**
+     * Method that increases the amount of customers that have payed.
+     */
     public void increasePaidCustomers() {
         this.paidCustomers++;
     }
-
+    
+    /**
+     * Method that returns the amount of customers that have payed.
+     * 
+     * @return The amount of customers that have payed.
+     */
     public int getPaidCustomers() {
         return paidCustomers;
     }
 
     //Here follows the print methods
 
-
+    /**
+     * Method that sets the current events name to a new event name.
+     * 
+     * @param eventName The name of an event.
+     */
     public void setEventName(String eventName) {
         this.eventName = eventName;
     }
-
+    
+    /**
+     * Method that returns the current events name.
+     * 
+     * @return The current events name.
+     */
     public String getEventName() {
         return eventName;
     }
 
+    /**
+     * Method that sets the current customer id to a new customer id.
+     * 
+     * @param customerId The id of a customer.
+     */
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
-
+    
+    /**
+     * Method that returns the current customers id.
+     * 
+     * @return The current customers id.
+     */
     public int getCustomerId() {
         return customerId;
     }
-
+    
+    /**
+     * Method that returns the amount of customers that never entered the store.
+     * 
+     * @return The amount of customers that never entered the store.
+     */
     public int getMissedCustomers() {
         return missedCustomers;
     }
-
+    
+    /**
+     * Method that increases the amount of missed customers.
+     */
     public void increaseMissedCustomers() {
         ++this.missedCustomers;
     }
-
+    
+    /**
+     * Method that returns the queue for the checkouts.
+     * 
+     * @return The queue for the checkouts.
+     */
     public CheckOutQueue getCheckOutQueue() {
         return checkOutQueue;
     }
 
     //test
 
-
+    /**
+     * Method that returns the time it takes to pick groceries.
+     * 
+     * @return The time it takes to pick groceries.
+     */
     public double getPickTime() {
         return pickTime.next();
     }
-
+    
+    /**
+     * Method that returns the time it takes to pay.
+     * 
+     * @return The time it takes to pay.
+     */
     public double getPayTime() {
         return payTime.next();
     }
-
+    
+    /**
+     * Method that returns the total amount of customers who have been in the queue.
+     * 
+     * @return The total amount of customers who have been in the queue.
+     */
     public int getTotalCustomerWhoHasQueued() {
         return totalCustomerWhoHasQueued;
     }
-
+    
+    /**
+     * Method that increases the total amount of customers who have been in the queue.
+     */
     public void increaseTotalCustomerWhoHasQueued() {
         this.totalCustomerWhoHasQueued++;
     }
-
-
+  
+    /**
+     * Method that returns the total time that customers have queued for.
+     * 
+     * @return The total time that customers have queued for.
+     */
     public float getTotalQueueTime() {
         return totalQueueTime;
     }
 
+    /**
+     * Method that sets the total queue time to a new total queue time 
+     */
     public void setTotalQueueTime() {
         this.totalQueueTime += (this.getTimePassed() - this.previousTime) * queueLength();
     }
@@ -219,28 +339,55 @@ public class StoreState extends State {
 
     //Methods with logic follows here
 
-
+    /**
+     * Method that returns the length of the checkout queue.
+     * 
+     * @return The length of the checkout queue.
+     */
     public int queueLength() {
         return this.getCheckOutQueue().size();
     }
-
+    
+    /**
+     * Method that returns the checkout queue as a string.
+     * 
+     * @return The checkout queue as a string.
+     */
     public String getLookInsideCustomerQueue() {
         return Arrays.toString(checkOutQueue.toArray());
     }
 
 
+    /**
+     * Method that sets the previous current time to a new previous current time.
+     * 
+     * @param previousTime The new previous current time.
+     */
     public void setPreviousTime(float previousTime) {
         this.previousTime = previousTime;
     }
 
+    /**
+     * Method that sets the time that the checkouts are not occupied to new time.
+     */
     public void setCheckoutIdleTime() {
         this.checkoutIdleTime += (this.getTimePassed() - this.previousTime) * checkoutsOpen;
     }
-
+    
+    /**
+     * Method that returns the time that the checkouts are not occupied.
+     * 
+     * @return The time that the checkouts are not occupied.
+     */
     public float getCheckoutIdleTime() {
         return checkoutIdleTime;
     }
-
+    
+    /**
+     * Method that returns true if the store is open. Otherwise false.
+     * 
+     * @return True if the store is open. Otherwise false. 
+     */
     public boolean getStoreIsOpen() {
         return this.storeIsOpen;
     }

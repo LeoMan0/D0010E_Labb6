@@ -54,7 +54,12 @@ public class ArrivalEvent extends Event {
         }
         return null;
     }
-
+    
+    /**
+     * Method that returns the time for the next event.
+     * 
+     * @return The time for the next event.
+     */
     public float scheduleNextEventTime() {
         return time;
     }

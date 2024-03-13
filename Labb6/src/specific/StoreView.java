@@ -79,14 +79,21 @@ public class StoreView extends View {
         System.out.println("Betaltider, [K_min..Kmax]: [" + this.storeState.getMinPayTime() + ".." + this.storeState.getMaxPayTime() + "]");
         System.out.println("Frö, f...................: " + this.storeState.getSeed());
     }
-
+    
+    /**
+     * Method that prints the headers for the information of the simulation.
+     */
     public void printEventHeaders() {
         System.out.println("\nFÖRLOPP");
         System.out.println("=======");
         System.out.println("Tid    Händelse  Kund   ?   led    ledT    I    $   :-(    köat    köT    köar    [Kassakö..]");
 
     }
-
+    /**
+     * Method that returns a string that indicates that the store is open if the store is open. Otherwise returns a string that indicates that it is false.
+     * @param storeIsOpen True or false if the store is open or not.
+     * @return A string that indicates that the store is open if the store is open. Otherwise returns a string that indicates that it is false.
+     */
     public String storeOpenPrint(boolean storeIsOpen) {
         if (storeIsOpen) {
             return "Ö";
